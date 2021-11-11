@@ -1,10 +1,10 @@
 import 'highcharts/css/highcharts.css';
 import './css/griffin-styles.scss';
-import '@Submodule/shared-css/styles.css';
+import '../submodules/shared-css/styles.css';
 import Highcharts from 'highcharts/highcharts.src.js';
 import HCAnnotations from 'highcharts/modules/annotations';
 import HCMore from 'highcharts/highcharts-more';
-import HCRegression from '@Submodule/highcharts-regression';
+import HCRegression from '../submodules/highcharts-regression';
 /* TO DO: for production, bundle HG or use CDN? */
 import options from './options.json';
 /* TO DO:  should these be part of Griffin or chartBuilder? */
