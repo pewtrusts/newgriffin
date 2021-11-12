@@ -208,8 +208,8 @@ picture.fullscreen {
   stroke-opacity: 35%;
 }
 .last-label-only .highcharts-data-label:not(.last-datalabel){
-  display: none;
-}
+  visibility: hidden;
+} 
 .scatter .highcharts-container.griffin .highcharts-markers {
       display: inline;
   }
