@@ -45,7 +45,9 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin(),
+        new MiniCssExtractPlugin({
+            filename: '[name]-styles.css'
+        }),
         new webpack.SourceMapDevToolPlugin({
             test: /\.js/,
             filename: '[name]js.map',
