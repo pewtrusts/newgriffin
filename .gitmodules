@@ -1,6 +1,8 @@
 [submodule "submodules/shared-css"]
 	path = submodules/shared-css
 	url = https://github.com/pewtrusts/shared-css.git
+	branch = main
 [submodule "submodules/highcharts-regression"]
 	path = submodules/highcharts-regression
 	url = https://github.com/pewtrusts/highcharts-regression.git
+	branch = master
