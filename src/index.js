@@ -1,21 +1,14 @@
-import 'highcharts/css/highcharts.css';
 import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
-import Highcharts from 'highcharts/highcharts.src.js';
-import HCAnnotations from 'highcharts/modules/annotations';
-import HCMore from 'highcharts/highcharts-more';
-import HCRegression from '../submodules/highcharts-regression';
-/* TO DO: for production, bundle HG or use CDN? */
+import Highcharts from 'Highcharts'; // defined as an external in webpack config
+import HCRegression from '../submodules/highcharts-regression'; // local fork
 import options from './options.json';
-/* TO DO:  should these be part of Griffin or chartBuilder? */
 import addCustomColorProperties from './scripts/addCustomColorProperties';
 import {addCustomPatterns} from './scripts/addCustomColorProperties';
 import returnFormatter from './scripts/return-number-formatter';
 import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
 import hash from './scripts/hash';
-HCAnnotations(Highcharts);
-HCMore(Highcharts);
 HCRegression(Highcharts);
 export function beforeRenderExtensions(options, config){
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
