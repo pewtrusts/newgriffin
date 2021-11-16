@@ -130,12 +130,19 @@ function getImage(e){
     }
 }
 function setObserver(anchor, container, config, pictureContainer){
+    function animate(){
+        window.requestAnimationFrame(function () {
+            window.Charts.push(Highcharts.chart(container, config));
+        });
+    }
     var observer = new IntersectionObserver(function(entries){
         if ( entries[0].isIntersecting ){
             pictureContainer.style.display = 'none';
-            window.requestAnimationFrame(function(){
-                window.Charts.push(Highcharts.chart(container, config));
-            });
+            if (window.requestIdleCallback){
+                requestIdleCallback(animate, {timeout:500});
+            } else {
+                animate();
+            }
             observer.disconnect();
         }
     });
