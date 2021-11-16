@@ -153,8 +153,8 @@ export function initSingleGriffin(griffin, i, _parent){
     var anchor = parent.querySelector('.js-griffin-anchor');
     var isLazy = parent.classList.contains('js-griffin--lazy');
     var btn;
-    if ( pictureContainer ){
-        pictureContainer.style.display = 'none';
+    if (isLazy){
+        parent.classList.add('lazy-load--ready');
     }
     if (!parent.hasDownload) {
         btn = document.createElement('button');
@@ -201,8 +201,6 @@ export function initSingleGriffin(griffin, i, _parent){
         });
     }
     if (isLazy && window.IntersectionObserver && !isChartBuilder) {
-        griffin.classList.add('lazy-load')
-        console.log('lazy');
         setObserver(anchor, container, config.highchartsConfig, pictureContainer);
     } else {
         chart = Highcharts.chart(container, config.highchartsConfig);

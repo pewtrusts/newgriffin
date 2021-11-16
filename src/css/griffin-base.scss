@@ -124,16 +124,7 @@ picture.fullscreen {
     overflow: hidden;
     position: relative;
   }
-  .lazy-load .picture-container::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    background-color: #f0f0f0;
-  }
-
+  
   .griffin-download-btn {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -213,3 +204,12 @@ picture.fullscreen {
 .scatter .highcharts-container.griffin .highcharts-markers {
       display: inline;
   }
+
+.lazy-load--ready {
+  .picture-container {
+    background-color: #f0f0f0;
+    picture {
+      visibility: hidden;
+    }
+  } 
+}
