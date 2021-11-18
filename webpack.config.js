@@ -9,6 +9,9 @@ module.exports = {
     entry: {
         griffin: './src/index.js'
     },
+    externals: {
+        Highcharts: "Highcharts"
+    },
     mode: 'production',
     module: {
         rules: [
