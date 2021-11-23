@@ -210,6 +210,7 @@ export function initSingleGriffin(griffin, i, _parent){
     if (isLazy && window.IntersectionObserver && !isChartBuilder) {
         setObserver(anchor, container, config.highchartsConfig, pictureContainer);
     } else {
+        pictureContainer.style.display = 'none';
         chart = Highcharts.chart(container, config.highchartsConfig);
         window.Charts.push(chart);
         return chart;
