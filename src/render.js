@@ -1,20 +1,21 @@
 import {init} from './griffin.js';
 import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
-import secrets from './../secrets.json';
+import secrets from '@Root/secrets.json';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
-async function getChartData(chartIDs){
+async function getChartData({chartIDs, dataString}){
     const response = await fetch(secrets.API_ENDPOINT, {
         method: 'POST',
         body: JSON.stringify({
-            chartIDs
+            chartIDs,
+            dataString
         })
     });
     return response.json();
 }
-async function renderGriffins(chartIDs, isFromParam){
-    const chartData = await getChartData(chartIDs);
+async function renderGriffins(chartIDs, isFromParam, dataString){
+    const chartData = await getChartData({chartIDs, dataString});
     if (isFromParam){
         renderFromParam(chartData);
     } else {
@@ -35,17 +36,22 @@ function renderFromImages(chartData){
 }
 function renderFromParam(chartData){
     const slot = document.querySelector('#chart-slot');
-    slot.insertAdjacentHTML('afterbegin', chartData[0].template);
+    chartData.forEach(d => {
+        slot.insertAdjacentHTML('beforeend', d.template);
+    });
 }
 export async function renderAndInit(searchParams){
     var chartData;
-    const id = searchParams && searchParams.get('id');
-    if ( id ){
-        chartData = await renderGriffins([id], true);
+    const ids = searchParams && searchParams.get('ids');
+    const dataString = searchParams && searchParams.get('dataString');
+    if ( ids ){
+        chartData = await renderGriffins(ids.split(','), true);
+    } else if ( dataString ){
+        chartData = await renderGriffins(null, true, dataString);
     } else {
         chartData = await renderGriffins(chartIDs);
     }
     if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat) {
-        init(chartData, !!id);
+        init(chartData, !!ids);
     }
 }

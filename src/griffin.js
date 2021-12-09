@@ -152,7 +152,7 @@ export function initSingleGriffin(griffin, i, _parent){
     var chart;
     var isChartBuilder = parent.classList.contains('js-griffin--chart-builder');
     var inner = isChartBuilder ? griffin.querySelector('.js-griffin-config').textContent : null;
-    var config = inner ? JSON.parse(inner) : chartDataArray[i].chartData.versions[0].config;
+    var config = inner ? JSON.parse(inner) : chartDataArray[i].chartData;
     var container = griffin.querySelector('.js-hc-container');
     var sourceNote = parent.querySelector('.js-griffin-credit');
     var pictureContainer = parent.querySelector('.js-picture-container');
@@ -215,10 +215,11 @@ export function initSingleGriffin(griffin, i, _parent){
         return chart;
     }
 }
-export function init(v, isFromParams){
+export function init(v, /*isFromParams*/){
     chartDataArray = v;
     window.Charts = [];
-    const griffins = !isFromParams ? document.querySelectorAll('.js-griffin') : [document.querySelector('#chart-slot')];
+   // const griffins = !isFromParams ? document.querySelectorAll('.js-griffin') : [document.querySelector('#chart-slot')];
+    const griffins = document.querySelectorAll('.js-griffin');
     if (window.CSS && CSS.supports('color', 'var(--primary)')) {
         for (var i = 0; i < griffins.length; i++){
             const singletons = griffins[i].querySelectorAll('.js-griffin-container');
