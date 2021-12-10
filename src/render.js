@@ -40,6 +40,21 @@ function renderFromParam(chartData){
         slot.insertAdjacentHTML('beforeend', d.template);
     });
 }
+function adjustIframeHeight(){
+    const isTop = window.self == top;
+    if (!isTop && window.frameElement.nodeName == "IFRAME") {
+        requestIdleCallback(() => {
+            // setTimeout(() => {
+            var body = document.body,
+                html = document.documentElement;
+
+            var height = Math.max(body.scrollHeight, body.offsetHeight,
+                html.clientHeight, html.scrollHeight, html.offsetHeight);
+            window.frameElement.style.height = height + 'px';
+            //  }, 1000);
+        }, { timeout: 1000 })
+    }
+}
 export async function renderAndInit(searchParams){
     var chartData;
     const ids = searchParams && searchParams.get('ids');
@@ -51,6 +66,7 @@ export async function renderAndInit(searchParams){
     } else {
         chartData = await renderGriffins(chartIDs);
     }
+    adjustIframeHeight();
     if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat) {
         init(chartData, !!ids);
     }
