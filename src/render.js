@@ -4,6 +4,7 @@ import '../submodules/shared-css/styles.css';
 import secrets from '@Root/secrets.json';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
+const slot = document.querySelector('#chart-slot');
 async function getChartData({chartIDs, data}){
     const response = await fetch(secrets.API_ENDPOINT, {
         method: 'POST',
@@ -35,7 +36,6 @@ function renderFromImages(chartData){
     });
 }
 function renderFromParam(chartData){
-    const slot = document.querySelector('#chart-slot');
     chartData.forEach(d => {
         slot.insertAdjacentHTML('beforeend', d.template);
     });
@@ -44,15 +44,8 @@ function adjustIframeHeight(){
     const isTop = window.self == top;
     if (!isTop && window.frameElement.nodeName == "IFRAME") {
         requestIdleCallback(() => {
-            // setTimeout(() => {
-            var body = document.body,
-                html = document.documentElement;
-
-            var height = Math.max(body.scrollHeight, body.offsetHeight,
-                html.clientHeight, html.scrollHeight, html.offsetHeight);
-            window.frameElement.style.height = height + 'px';
-            //  }, 1000);
-        }, { timeout: 1000 })
+            window.frameElement.style.height = slot.offsetHeight + 40 + 'px';
+        }, { timeout: 200 })
     }
 }
 export async function renderAndInit(searchParamsOrData){

@@ -1,3 +1,15 @@
+a {
+    background: 0 0;
+    color: #296ec3;
+    text-decoration: none;
+    -webkit-transition: color .28s cubic-bezier(.4,0,.2,1),color .28s cubic-bezier(.4,0,.2,1);
+    transition: color .28s cubic-bezier(.4,0,.2,1),color .28s cubic-bezier(.4,0,.2,1);
+}
+a:hover {
+    color: rgba(41,110,195,.7);
+    text-decoration: underline;
+}
+
 .highcharts-container {
   height: auto;
 }
@@ -129,6 +141,7 @@ picture.fullscreen {
   }
   
   .griffin-download-btn {
+    font-family: inherit;
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
