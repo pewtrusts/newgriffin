@@ -4,18 +4,18 @@ import '../submodules/shared-css/styles.css';
 import secrets from '@Root/secrets.json';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
-async function getChartData({chartIDs, dataString}){
+async function getChartData({chartIDs, data}){
     const response = await fetch(secrets.API_ENDPOINT, {
         method: 'POST',
         body: JSON.stringify({
             chartIDs,
-            dataString
+            data
         })
     });
     return response.json();
 }
-async function renderGriffins(chartIDs, isFromParam, dataString){
-    const chartData = await getChartData({chartIDs, dataString});
+async function renderGriffins(chartIDs, isFromParam, data){
+    const chartData = await getChartData({chartIDs, data});
     if (isFromParam){
         renderFromParam(chartData);
     } else {
@@ -55,16 +55,19 @@ function adjustIframeHeight(){
         }, { timeout: 1000 })
     }
 }
-export async function renderAndInit(searchParams){
-    var chartData;
-    const ids = searchParams && searchParams.get('ids');
-    const dataString = searchParams && searchParams.get('dataString');
-    if ( ids ){
-        chartData = await renderGriffins(ids.split(','), true);
-    } else if ( dataString ){
-        chartData = await renderGriffins(null, true, dataString);
-    } else {
-        chartData = await renderGriffins(chartIDs);
+export async function renderAndInit(searchParamsOrData){
+    var chartData, ids;
+    switch (searchParamsOrData instanceof URLSearchParams && searchParamsOrData.length) {
+        case true:
+            ids = searchParamsOrData.get('ids').split(',');
+            chartData = await renderGriffins(ids, true);
+            break;
+        default:
+        if (searchParamsOrData && searchParamsOrData instanceof Object && !(searchParamsOrData instanceof URLSearchParams)){
+            chartData = await renderGriffins(null, true, searchParamsOrData);
+        } else {
+            chartData = await renderGriffins(chartIDs);
+        }
     }
     adjustIframeHeight();
     if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat) {
