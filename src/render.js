@@ -64,6 +64,6 @@ export async function renderAndInit(searchParamsOrData){
     }
     adjustIframeHeight();
     if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat) {
-        init(chartData, !!ids);
+        return init(chartData, !!ids);
     }
 }

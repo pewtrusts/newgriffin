@@ -230,7 +230,7 @@ export function init(v, /*isFromParams*/){
                 }*/
                 return;
             } else {
-                initSingleGriffin(griffins[i],i);
+                return initSingleGriffin(griffins[i],i);
             }
         }
     }
