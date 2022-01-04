@@ -8,6 +8,7 @@ import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
 import hash from './scripts/hash';
 let chartDataArray;
+const isTop = window.self == top;
 HCRegression(Highcharts);
 export function beforeRenderExtensions(options, config){
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
@@ -112,6 +113,9 @@ export function extendObj(base, properties, value){
 }
 function getImage(e){
     e.preventDefault();
+    if (!isTop && window.frameElement.nodeName == "IFRAME") {
+        return; // if the docu is in an iframe ie in the chartbuilder tool, let the tool's eventListener fire instead of this
+    }
     var figure = this.parentElement.parentElement.parentElement;
     if ( figure.classList.contains('js-griffin--chart-builder') ){
         return;
