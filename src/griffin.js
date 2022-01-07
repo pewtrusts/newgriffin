@@ -226,17 +226,28 @@ export function init(v, /*isFromParams*/){
     const griffins = document.querySelectorAll('.js-griffin');
     if (window.CSS && CSS.supports('color', 'var(--primary)')) {
         for (var i = 0; i < griffins.length; i++){
+            console.log(i + ' of ' + griffins.length);
             const singletons = griffins[i].querySelectorAll('.js-griffin-container');
             if (singletons.length > 1){
                 // TO DO: FIGURE OUT MULTIPLES
                 /*for (var j = 0; j < singletons.length; j++){
                     initSingleGriffin(singletons[j],i, griffins[i]);
                 }*/
-                return;
             } else {
-                return initSingleGriffin(griffins[i],i);
+                /**
+                 * when Griffin is called from the chart builder tool, we need to return the instance
+                 * but we need to avoid returning the instance otherwise so that the for loop will continue
+                 * through. the tool will always only send 1 instance. if that changes we'll need another way to 
+                 * differentiate
+                 */
+                if (griffins.length == 1){
+                    return initSingleGriffin(griffins[i],i);
+                } else {
+                    initSingleGriffin(griffins[i], i);
+                }
             }
         }
+        return;
     }
 }
 /*if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat){

@@ -49,11 +49,12 @@ function adjustIframeHeight(){
     }
 }
 export async function renderAndInit(searchParamsOrData){
-    var chartData, ids;
-    switch (searchParamsOrData instanceof URLSearchParams && searchParamsOrData.length) {
+    var chartData, idString, ids;
+    switch (searchParamsOrData instanceof URLSearchParams) {
         case true:
-            ids = searchParamsOrData.get('ids').split(',');
-            chartData = await renderGriffins(ids, true);
+            idString = searchParamsOrData.get('ids');
+            ids = idString ? idString.split(',') : [];
+            chartData = await renderGriffins(ids, !!ids.length);
             break;
         default:
         if (searchParamsOrData && searchParamsOrData instanceof Object && !(searchParamsOrData instanceof URLSearchParams)){
