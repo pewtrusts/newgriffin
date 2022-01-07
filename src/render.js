@@ -1,7 +1,7 @@
 import {init} from './griffin.js';
 import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
-import secrets from '@Root/secrets.json';
+import secrets from './../secrets.json';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
 const slot = document.querySelector('#chart-slot');
