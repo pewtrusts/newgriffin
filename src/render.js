@@ -51,15 +51,17 @@ function adjustIframeHeight(){
 export async function renderAndInit(searchParamsOrData){
     var chartData, idString, ids;
     switch (searchParamsOrData instanceof URLSearchParams) {
-        case true:
+        case true: // ids passed in from URL param string. ie. from chartViewer preview
             idString = searchParamsOrData.get('ids');
             ids = idString ? idString.split(',') : [];
             chartData = await renderGriffins(ids, !!ids.length);
             break;
         default:
         if (searchParamsOrData && searchParamsOrData instanceof Object && !(searchParamsOrData instanceof URLSearchParams)){
+            // data passed in directly. i.e., from tool's iframe
             chartData = await renderGriffins(null, true, searchParamsOrData);
         } else {
+            // ids passed in from griffin images on page, such as in production
             chartData = await renderGriffins(chartIDs);
         }
     }
