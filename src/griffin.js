@@ -22,6 +22,10 @@ export function beforeRenderExtensions(options, config){
         return false;
     });
     extendObj(options, ['plotOptions','series','dataLabels','format'], undefined);
+    extendObj(options, ['plotOptions','series','events','afterAnimate'], function(){
+        var chartLoaded = new CustomEvent('chartLoaded', {bubbles: true});
+        document.body.dispatchEvent(chartLoaded);
+    });
     extendObj(options, ['plotOptions','line','dataLabels','formatter'], function(){
         var that = this;
             setTimeout(function(){
