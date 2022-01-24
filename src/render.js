@@ -1,4 +1,4 @@
-/* global API_ENDPOINT_GET_CHART */
+/* global API_HOST API_ENDPOINT_GET_CHART */
 import {init} from './griffin.js';
 import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
@@ -6,7 +6,7 @@ const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
 const slot = document.querySelector('#chart-slot');
 async function getChartData({chartIDs, data}){
-    const response = await fetch(API_ENDPOINT_GET_CHART, {
+    const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
         method: 'POST',
         body: JSON.stringify({
             chartIDs,

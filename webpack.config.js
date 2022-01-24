@@ -67,6 +67,7 @@ module.exports = {
         }),
         new webpack.DefinePlugin({
             'API_ENDPOINT_GET_CHART': '"' + secrets.API_ENDPOINT_GET_CHART + '"',
+            'API_HOST': '"' + secrets.API_HOST + '"',
         }),
     ],
     resolve: {
