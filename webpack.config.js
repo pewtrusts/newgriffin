@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const TerserPlugin = require('terser-webpack-plugin');
+const secrets = require('./secrets.json');
 module.exports = {
     devtool: 'source-map',
     entry: {
@@ -63,7 +64,10 @@ module.exports = {
 
                 return `webpack:///${info.resourcePath}?${info.hash}`;
             },
-        })
+        }),
+        new webpack.DefinePlugin({
+            'API_ENDPOINT_GET_CHART': '"' + secrets.API_ENDPOINT_GET_CHART + '"',
+        }),
     ],
     resolve: {
         alias: {
