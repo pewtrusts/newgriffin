@@ -229,3 +229,9 @@ picture.fullscreen {
     }
   } 
 }
+.griffin-image {
+  width: 100%;
+}
+.chart-viewer-body {
+  margin: auto var(--column-margin-inline, 16px);
+}

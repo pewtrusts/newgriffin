@@ -254,6 +254,6 @@ export function init(v, /*isFromParams*/){
         return;
     }
 }
-/*if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat){
+if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat){
     init();
-}*/
+}

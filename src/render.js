@@ -30,9 +30,9 @@ function renderFromImages(chartData){
         slot.insertAdjacentHTML('afterbegin', chartData[i].template);
         img.insertAdjacentElement('beforebegin', slot);
         const picContainer = slot.querySelector('.js-picture-container');
+        img.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.top + '%' : 0;
+        img.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.bottom + '%' : 0;
         picContainer.appendChild(img);
-        img.style.marginTop = chartData[i].chartData.margins[0];
-        img.style.marginBottom = chartData[i].chartData.margins[1];
     });
 }
 function renderFromParam(chartData){
@@ -57,7 +57,7 @@ export async function renderAndInit(searchParamsOrData){
             chartData = await renderGriffins(ids, !!ids.length);
             break;
         default:
-        if (searchParamsOrData && searchParamsOrData instanceof Object && !(searchParamsOrData instanceof URLSearchParams)){
+        if (searchParamsOrData && searchParamsOrData instanceof Object ){
             // data passed in directly. i.e., from tool's iframe
             chartData = await renderGriffins(null, true, searchParamsOrData);
         } else {
