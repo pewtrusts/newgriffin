@@ -116,24 +116,18 @@ export function extendObj(base, properties, value){
      */
 }
 function getImage(e){
-    e.preventDefault();
     if (!isTop && window.frameElement.nodeName == "IFRAME") {
+        e.preventDefault();
         return; // if the docu is in an iframe ie in the chartbuilder tool, let the tool's eventListener fire instead of this
     }
     var figure = this.parentElement.parentElement.parentElement;
     if ( figure.classList.contains('js-griffin--chart-builder') ){
+        e.preventDefault();
         return;
     }
-    var imageSource = figure.querySelector('picture.fullscreen source').getAttribute('srcset').split(/ \dx,? ?/)[1];
-    var chartTitle = figure.querySelector('h1');
-    var chartTitleText = chartTitle ? chartTitle.textContent : '[no title]';
-    var a = document.createElement("a");
-    a.href = imageSource;
-    a.setAttribute("download", 'chart.png');
-    a.click();
     var dataLayer = window.dataLayer || null;
     if (dataLayer && window.griffinGTMDownloadFn ) {
-        window.griffinGTMDownloadFn(chartTitleText); // set the Fn elsewhere
+        window.griffinGTMDownloadFn(); // set the Fn elsewhere
     }
 }
 function setObserver(anchor, container, config, pictureContainer){
@@ -164,20 +158,22 @@ export function initSingleGriffin(griffin, i, _parent){
     var container = griffin.querySelector('.js-hc-container');
     var sourceNote = parent.querySelector('.js-griffin-credit');
     var pictureContainer = parent.querySelector('.js-picture-container');
+    var imageSource = pictureContainer.querySelector('img').src;
     var anchor = parent.querySelector('.js-griffin-anchor');
     var isLazy = parent.classList.contains('js-griffin--lazy');
-    var btn;
+    var imageLink;
     if (isLazy){
         parent.classList.add('lazy-load--ready');
     }
     if (!parent.hasDownload) {
-        btn = document.createElement('button');
-        btn.textContent = 'Download image';
-        btn.className = 'griffin-download-btn';
-        btn.setAttribute('data-index', i);
-        btn.setAttribute('role', 'button');
-        btn.addEventListener('click', getImage);
-        sourceNote.insertAdjacentElement('beforeend', btn);
+        imageLink = document.createElement('a');
+        imageLink.textContent = 'View image';
+        imageLink.className = 'griffin-download-btn';
+        imageLink.setAttribute('data-index', i);
+        imageLink.setAttribute('target', '_blank');
+        imageLink.href = imageSource
+        imageLink.addEventListener('click', getImage);
+        sourceNote.insertAdjacentElement('beforeend', imageLink);
         parent.hasDownload = true;
 
     }
