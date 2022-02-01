@@ -23,14 +23,14 @@ a:hover {
   top: 225px;
   left: 0;
 }
-picture.fullscreen {
+img.fullscreen {
   display: none;
 }
 @media screen and (min-width: 504px){
-  picture.fullscreen {
+  img.fullscreen {
     display: inline;
   }
-  picture.mobile {
+  img.mobile {
     display: none;
   }
 }

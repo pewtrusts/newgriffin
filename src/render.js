@@ -27,12 +27,19 @@ async function renderGriffins(chartIDs, isFromParam, data){
 function renderFromImages(chartData){
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
+        const mobileImg = img.cloneNode(true);
         slot.insertAdjacentHTML('afterbegin', chartData[i].template);
         img.insertAdjacentElement('beforebegin', slot);
         const picContainer = slot.querySelector('.js-picture-container');
         img.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.top + '%' : 0;
         img.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.bottom + '%' : 0;
+        img.classList.add('fullscreen');
+        mobileImg.src = img.src.replace('.png','-mobile.png');
+        mobileImg.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.top + '%' : 0;
+        mobileImg.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.bottom + '%' : 0;
+        mobileImg.classList.add('mobile');
         picContainer.appendChild(img);
+        picContainer.appendChild(mobileImg);
     });
 }
 function renderFromParam(chartData){
