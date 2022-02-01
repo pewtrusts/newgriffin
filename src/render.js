@@ -4,6 +4,7 @@ import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
+const griffinTypes = Array.from(griffinImages).map(img => img.dataset.griffinType);
 const slot = document.querySelector('#chart-slot');
 async function getChartData({chartIDs, data}){
     const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
@@ -20,7 +21,7 @@ async function renderGriffins(chartIDs, isFromParam, data){
     if (isFromParam){
         renderFromParam(chartData);
     } else {
-        renderFromImages(chartData)
+        renderFromImages(chartData, griffinTypes)
     }
     return chartData;
 }
@@ -28,7 +29,7 @@ function renderFromImages(chartData){
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
         const mobileImg = img.cloneNode(true);
-        slot.insertAdjacentHTML('afterbegin', chartData[i].template);
+        slot.insertAdjacentHTML('beforeend', chartData[i].template);
         img.insertAdjacentElement('beforebegin', slot);
         const picContainer = slot.querySelector('.js-picture-container');
         img.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.top + '%' : 0;
@@ -40,6 +41,12 @@ function renderFromImages(chartData){
         mobileImg.classList.add('mobile');
         picContainer.appendChild(img);
         picContainer.appendChild(mobileImg);
+        if (griffinTypes[i] == 'static'){
+            slot.querySelector('.js-_griffin').classList.remove('js-griffin');
+        }
+        if (griffinTypes[i] == 'lazy'){
+            slot.querySelector('.js-_griffin').classList.add('js-griffin--lazy');
+        }
     });
 }
 function renderFromParam(chartData){
