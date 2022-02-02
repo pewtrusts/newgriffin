@@ -158,7 +158,7 @@ export function initSingleGriffin(griffin, i, _parent){
     var container = griffin.querySelector('.js-hc-container');
     var sourceNote = parent.querySelector('.js-griffin-credit');
     var pictureContainer = parent.querySelector('.js-picture-container');
-    var imageSource = pictureContainer.querySelector('img').src;
+    var imageSource = pictureContainer.querySelector('img') ? pictureContainer.querySelector('img').src : '';
     var anchor = parent.querySelector('.js-griffin-anchor');
     var isLazy = parent.classList.contains('js-griffin--lazy');
     var imageLink;
