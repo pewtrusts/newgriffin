@@ -30,7 +30,7 @@ export function beforeRenderExtensions(options, config){
         var that = this;
             setTimeout(function(){
                 var index = that.point.index;
-                console.log(that.point.dataLabel);
+                
                 switch (index) {
                     case 0:
                         that.point.dataLabel.element.classList.add('first-datalabel');
@@ -226,7 +226,7 @@ export function init(v, /*isFromParams*/){
     const griffins = document.querySelectorAll('.js-griffin');
     if (window.CSS && CSS.supports('color', 'var(--primary)')) {
         for (var i = 0; i < griffins.length; i++){
-            console.log(i + ' of ' + griffins.length);
+            
             const singletons = griffins[i].querySelectorAll('.js-griffin-container');
             if (singletons.length > 1){
                 // TO DO: FIGURE OUT MULTIPLES
