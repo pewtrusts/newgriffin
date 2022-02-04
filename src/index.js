@@ -26,7 +26,7 @@ export function beforeRenderExtensions(options, config){
         var that = this;
             setTimeout(function(){
                 var index = that.point.index;
-                console.log(that.point.dataLabel);
+                
                 switch (index) {
                     case 0:
                         that.point.dataLabel.element.classList.add('first-datalabel');
