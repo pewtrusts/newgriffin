@@ -6,18 +6,19 @@ const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
 const griffinTypes = Array.from(griffinImages).map(img => img.dataset.griffinType);
 const slot = document.querySelector('#chart-slot');
-async function getChartData({chartIDs, data}){
+async function getChartData({chartIDs, data, publishedFlags}){
     const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
         method: 'POST',
         body: JSON.stringify({
             chartIDs,
-            data
+            data,
+            publishedFlags
         })
     });
     return response.json();
 }
-async function renderGriffins(chartIDs, isFromParam, data){
-    const chartData = await getChartData({chartIDs, data});
+async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = []}){
+    const chartData = await getChartData({chartIDs, data, publishedFlags});
     if (isFromParam){
         renderFromParam(chartData);
     } else {
@@ -63,20 +64,22 @@ function adjustIframeHeight(){
     }
 }
 export async function renderAndInit(searchParamsOrData){
-    var chartData, idString, ids;
+    var chartData, idString, ids, pString, p;
     switch (searchParamsOrData instanceof URLSearchParams) {
         case true: // ids passed in from URL param string. ie. from chartViewer preview
             idString = searchParamsOrData.get('ids');
             ids = idString ? idString.split(',') : [];
-            chartData = await renderGriffins(ids, !!ids.length);
+            pString = searchParamsOrData.get('p');
+            p = pString ? pString.split(',') : [];
+            chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length, publishedFlags: p});
             break;
         default:
         if (searchParamsOrData && searchParamsOrData instanceof Object ){
             // data passed in directly. i.e., from tool's iframe
-            chartData = await renderGriffins(null, true, searchParamsOrData);
+            chartData = await renderGriffins({chartIDs: null, isFromParam: true, data: searchParamsOrData});
         } else {
             // ids passed in from griffin images on page, such as in production
-            chartData = await renderGriffins(chartIDs);
+            chartData = await renderGriffins({chartIDs});
         }
     }
     adjustIframeHeight();
