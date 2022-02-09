@@ -16,6 +16,15 @@ a:hover {
 .griffin-figure {
   position: relative;
 }
+.griffin-unpublished::before {
+  content: 'unpublished';
+  display: block;
+  position: absolute;
+  top: 0;
+  color: #767676;
+  z-index: 1;
+
+}
 .griffin-anchor {
   position: absolute;
   width: 1px;
@@ -235,3 +244,4 @@ img.fullscreen {
 .chart-viewer-body {
   margin: auto var(--column-margin-inline, 16px);
 }
+
