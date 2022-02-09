@@ -29,7 +29,7 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = []}
 function renderFromImages(chartData){
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
-        const mobileImg = img.cloneNode(true);
+        const mobileImg = document.getElementById('mobile-' + img.dataset.id)
         slot.insertAdjacentHTML('beforeend', chartData[i].template);
         img.insertAdjacentElement('beforebegin', slot);
         const picContainer = slot.querySelector('.js-picture-container');
@@ -39,7 +39,6 @@ function renderFromImages(chartData){
         mobileImg.src = img.src.replace('.png','-mobile.png');
         mobileImg.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.top + '%' : 0;
         mobileImg.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.bottom + '%' : 0;
-        mobileImg.classList.add('mobile');
         picContainer.appendChild(img);
         picContainer.appendChild(mobileImg);
         if (griffinTypes[i] == 'static'){
