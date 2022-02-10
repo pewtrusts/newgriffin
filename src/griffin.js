@@ -25,6 +25,10 @@ export function beforeRenderExtensions(options, config){
     extendObj(options, ['plotOptions','series','events','afterAnimate'], function(){
         var chartLoaded = new CustomEvent('chartLoaded', {bubbles: true});
         document.body.dispatchEvent(chartLoaded);
+        console.log('resize iframe');
+        /**
+         * how to resize the iframe if needed?
+         */
     });
     extendObj(options, ['plotOptions','line','dataLabels','formatter'], function(){
         var that = this;

@@ -81,8 +81,8 @@ export async function renderAndInit(searchParamsOrData){
             chartData = await renderGriffins({chartIDs});
         }
     }
-    adjustIframeHeight();
+adjustIframeHeight();
     if (!(!!window.MSInputMethodContext && !!document.documentMode) && !!Array.prototype.flat) {
-        return init(chartData, !!ids);
+        return init(chartData, !!ids)
     }
 }
