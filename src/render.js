@@ -54,7 +54,7 @@ function renderFromParam(chartData){
         slot.insertAdjacentHTML('beforeend', d.template);
     });
 }
-function adjustIframeHeight(){
+export function adjustIframeHeight(){
     const isTop = window.self == top;
     if (!isTop && window.frameElement.nodeName == "IFRAME") {
         requestIdleCallback(() => {

@@ -7,6 +7,7 @@ import returnFormatter from './scripts/return-number-formatter';
 import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
 import hash from './scripts/hash';
+import {adjustIframeHeight} from './render';
 let chartDataArray;
 const isTop = window.self == top;
 HCRegression(Highcharts);
@@ -29,6 +30,7 @@ export function beforeRenderExtensions(options, config){
         /**
          * how to resize the iframe if needed?
          */
+        adjustIframeHeight();
     });
     extendObj(options, ['plotOptions','line','dataLabels','formatter'], function(){
         var that = this;
