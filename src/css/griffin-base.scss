@@ -16,14 +16,17 @@ a:hover {
 .griffin-figure {
   position: relative;
 }
-.griffin-unpublished::before {
-  content: 'unpublished';
-  display: block;
+.griffin-unpublished-link {
   position: absolute;
+  top: 0;
   right: 0;
-  color: #767676;
-  z-index: 1;
-
+  padding: 0 0.3em 0.1em;
+  background-color: #767676;
+  color: #fff;
+}
+.griffin-unpublished-link:hover, .griffin-unpublished-link:focus {
+  color: #fff;
+  font-weight: bold;
 }
 .griffin-anchor {
   position: absolute;
