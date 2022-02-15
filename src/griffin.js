@@ -12,6 +12,10 @@ let chartDataArray;
 const isTop = window.self == top;
 HCRegression(Highcharts);
 export function beforeRenderExtensions(options, config){
+    if (config.griffinConfig.LockHeight && config.highchartsConfig.responsive.rules[0].chartOptions.chart.height.includes('%')){
+        let percentage = parseFloat(config.highchartsConfig.responsive.rules[0].chartOptions.chart.height) / 100;
+        config.highchartsConfig.responsive.rules[0].chartOptions.chart.height = Math.round(percentage * +config.griffinConfig.MaxWidth);
+    }
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
         return this.point.name + '<br>' + returnFormatter('percentage','tooltip',config.griffinConfig.LabelDecimals).call({ value: this.percentage / 100 });
     })
