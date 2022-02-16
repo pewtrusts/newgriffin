@@ -8,13 +8,26 @@ import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
 import hash from './scripts/hash';
 import {adjustIframeHeight} from './render';
+import defaultsDeep from 'lodash.defaultsdeep';
+const _ = { defaultsDeep };
 let chartDataArray;
 const isTop = window.self == top;
 HCRegression(Highcharts);
 export function beforeRenderExtensions(options, config){
+    /**
+     * lockHeight calculations now done at runtime rather than being saved into the chart config
+     */
     if (config.griffinConfig.LockHeight && config.highchartsConfig.responsive.rules[0].chartOptions.chart.height.includes('%')){
         let percentage = parseFloat(config.highchartsConfig.responsive.rules[0].chartOptions.chart.height) / 100;
         config.highchartsConfig.responsive.rules[0].chartOptions.chart.height = Math.round(percentage * +config.griffinConfig.MaxWidth);
+    }
+    /**
+     * custom options are now merged with chart config at runtime rather than when the chart is saved. previous method
+     * had ill effects, with the custom options being merge again and again
+     */
+    var customOptions = config.griffinConfig.CustomSettings;
+    if (customOptions && typeof customOptions == 'object' && Object.keys(customOptions).length > 0) {
+        config.highchartsConfig = _.defaultsDeep(customOptions, config.highchartsConfig);
     }
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
         return this.point.name + '<br>' + returnFormatter('percentage','tooltip',config.griffinConfig.LabelDecimals).call({ value: this.percentage / 100 });
