@@ -17,7 +17,10 @@ export function beforeRenderExtensions(options, config){
     /**
      * lockHeight calculations now done at runtime rather than being saved into the chart config
      */
-    if (config.griffinConfig.LockHeight && config.highchartsConfig.responsive.rules[0].chartOptions.chart.height.includes('%')){
+    if (config.griffinConfig.LockHeight && 
+        config.highchartsConfig.responsive.rules[0] && 
+        config.highchartsConfig.responsive.rules[0].chartOptions.chart &&
+        config.highchartsConfig.responsive.rules[0].chartOptions.chart.height.includes('%')){
         let percentage = parseFloat(config.highchartsConfig.responsive.rules[0].chartOptions.chart.height) / 100;
         config.highchartsConfig.responsive.rules[0].chartOptions.chart.height = Math.round(percentage * +config.griffinConfig.MaxWidth);
     }
