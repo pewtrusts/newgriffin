@@ -36,7 +36,7 @@ export default function _returnFormatter(format, context, decimals){
         case 'currency':
             return function _currency() {
                 var value = this.value !== undefined ? this.value : this.y;
-                return '$' + Highcharts.numberFormat(value, 2);
+                return '$' + Highcharts.numberFormat(value, decimals || 0);
             };
         default:
             return function _default() {
