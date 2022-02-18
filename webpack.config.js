@@ -8,7 +8,8 @@ const secrets = require('./secrets.json');
 module.exports = {
     devtool: 'source-map',
     entry: {
-        griffin: './src/index.js'
+        griffin: './src/index.js',
+        loadGriffin: './src/loadGriffin.js'
     },
     mode: 'production',
     module: {
