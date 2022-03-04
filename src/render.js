@@ -17,8 +17,22 @@ async function getChartData({chartIDs, data, publishedFlags}){
     });
     return response.json();
 }
-async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = []}){
+async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail}){
     const chartData = await getChartData({chartIDs, data, publishedFlags});
+    if (isForThumbnail){
+        /**
+         * disabling the legend works only if there are not responsive rules overriding it. need to push
+         * a responsive rule that is active at this width instead.
+         */
+        chartData[0].chartData.highchartsConfig.legend.enabled = false;
+        if (chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
+            let height = Math.round(366 * parseFloat(chartData[0].chartData.highchartsConfig.chart.height) / 100);
+            chartData[0].chartData.highchartsConfig.chart.height = height - chartData[0].imageMargins.mobile.mbLegendHeight;
+        }   else {
+            chartData[0].chartData.highchartsConfig.chart.height = chartData[0].chartData.highchartsConfig.chart.height - chartData[0].imageMargins.mobile.mbLegendHeight;   
+        }
+
+    }
     if (isFromParam){
         renderFromParam(chartData);
     } else {
@@ -63,14 +77,16 @@ export function adjustIframeHeight(){
     }
 }
 export async function renderAndInit(searchParamsOrData){
-    var chartData, idString, ids, pString, p;
+    var chartData, idString, ids, pString, p, tString, t;
     switch (searchParamsOrData instanceof URLSearchParams) {
         case true: // ids passed in from URL param string. ie. from chartViewer preview
             idString = searchParamsOrData.get('ids');
             ids = idString ? idString.split(',') : [];
             pString = searchParamsOrData.get('p');
             p = pString ? pString.split(',') : [];
-            chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length, publishedFlags: p});
+            tString = searchParamsOrData.get('t'); // true or false for isThumbnail image creation
+            t = tString == 'true';
+            chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length, publishedFlags: p, isForThumbnail: t});
             break;
         default:
         if (searchParamsOrData && searchParamsOrData instanceof Object ){
