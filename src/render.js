@@ -22,10 +22,10 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [],
     if (isForThumbnail){
         
         chartData[0].chartData.highchartsConfig.responsive.rules.push({chartOptions:{legend:{enabled:false}},condition:{minWidth:1}})
-        if (chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
+        if (chartData[0].imageMargins && typeof chartData[0].chartData.highchartsConfig.chart == 'string' && chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
             let height = Math.round(366 * parseFloat(chartData[0].chartData.highchartsConfig.chart.height) / 100);
             chartData[0].chartData.highchartsConfig.chart.height = height - chartData[0].imageMargins.mobile.mbLegendHeight;
-        }   else {
+        } else if (chartData[0].imageMargins){
             chartData[0].chartData.highchartsConfig.chart.height = chartData[0].chartData.highchartsConfig.chart.height - chartData[0].imageMargins.mobile.mbLegendHeight;   
         }
 
