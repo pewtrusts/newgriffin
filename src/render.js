@@ -20,11 +20,8 @@ async function getChartData({chartIDs, data, publishedFlags}){
 async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail}){
     const chartData = await getChartData({chartIDs, data, publishedFlags});
     if (isForThumbnail){
-        /**
-         * disabling the legend works only if there are not responsive rules overriding it. need to push
-         * a responsive rule that is active at this width instead.
-         */
-        chartData[0].chartData.highchartsConfig.legend.enabled = false;
+        
+        chartData[0].chartData.highchartsConfig.responsive.rules.push({chartOptions:{legend:{enabled:false}},condition:{minWidth:1}})
         if (chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
             let height = Math.round(366 * parseFloat(chartData[0].chartData.highchartsConfig.chart.height) / 100);
             chartData[0].chartData.highchartsConfig.chart.height = height - chartData[0].imageMargins.mobile.mbLegendHeight;
