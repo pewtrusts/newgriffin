@@ -215,6 +215,18 @@ export function initSingleGriffin(griffin, i, _parent){
         })
     );
     extendObj(config.highchartsConfig, ['legend', 'labelFormatter'], returnLegendFormatter(config.highchartsConfig.chart.type));
+    /**
+    * short term fix for scatter plots. should allow for sifferent defaults based on chart types
+    * ***** ALSO ***** why are some modifications made to the options (defaults) and others on the config object? 
+    * where are they merged?
+    */
+    if (config.highchartsConfig.chart.type == 'scatter') {
+        extendObj(config.highchartsConfig, ['xAxis', 'tickLength'], 7);
+        extendObj(config.highchartsConfig, ['yAxis[0]', 'tickLength'], 7);
+        extendObj(config.highchartsConfig, ['xAxis', 'tickWidth'], 1);
+        extendObj(config.highchartsConfig, ['yAxis[0]', 'tickWidth'], 1);
+        extendObj(config.highchartsConfig, ['xAxis', 'tickmarkPlacement'], 'on');
+    }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
     config.highchartsConfig.yAxis.forEach(function (axis) {
         axis.title.text = axis.title.text || null;

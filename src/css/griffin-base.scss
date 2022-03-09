@@ -241,7 +241,10 @@ img.fullscreen {
 .scatter .highcharts-container.griffin .highcharts-markers {
       display: inline;
   }
-
+.scatter .highcharts-yaxis .highcharts-tick, .scatter .highcharts-xaxis .highcharts-tick {
+  stroke-width: 1;
+  stroke: #a9a9a9;
+}
 .lazy-load--ready {
   .picture-container {
     background-color: #f0f0f0;
