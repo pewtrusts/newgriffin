@@ -6,19 +6,20 @@ const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
 const griffinTypes = Array.from(griffinImages).map(img => img.dataset.griffinType);
 const slot = document.querySelector('#chart-slot');
-async function getChartData({chartIDs, data, publishedFlags}){
+async function getChartData({chartIDs, data, publishedFlags, project}){
     const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
         method: 'POST',
         body: JSON.stringify({
             chartIDs,
             data,
-            publishedFlags
+            publishedFlags,
+            project
         })
     });
     return response.json();
 }
-async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail}){
-    const chartData = await getChartData({chartIDs, data, publishedFlags});
+async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail, project}){
+    const chartData = await getChartData({chartIDs, data, publishedFlags, project});
     if (isForThumbnail){
         /**
          * the griffin chart tool renders charts in puppeteer and screenshots images of them. the thumbnail image
@@ -83,7 +84,7 @@ export function adjustIframeHeight(){
     }
 }
 export async function renderAndInit(searchParamsOrData){
-    var chartData, idString, ids, pString, p, tString, t;
+    var chartData, idString, ids, pString, p, tString, t, project;
     switch (searchParamsOrData instanceof URLSearchParams) {
         case true: // ids passed in from URL param string. ie. from chartViewer preview
             idString = searchParamsOrData.get('ids');
@@ -92,7 +93,9 @@ export async function renderAndInit(searchParamsOrData){
             p = pString ? pString.split(',') : [];
             tString = searchParamsOrData.get('t'); // true or false for isThumbnail image creation
             t = tString == 'true';
-            chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length, publishedFlags: p, isForThumbnail: t});
+            project = searchParamsOrData.get('project');
+            console.log(project);
+            chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length || !!project, publishedFlags: p, isForThumbnail: t, project});
             break;
         default:
         if (searchParamsOrData && searchParamsOrData instanceof Object ){
