@@ -45,12 +45,13 @@ export function beforeRenderExtensions(options, config){
     extendObj(options, ['plotOptions','series','dataLabels','format'], undefined);
     extendObj(options, ['plotOptions','series','events','afterAnimate'], function(){
         var chartLoaded = new CustomEvent('chartLoaded', {bubbles: true});
-        document.body.dispatchEvent(chartLoaded);
-        console.log('resize iframe');
-        /**
-         * how to resize the iframe if needed?
-         */
-        adjustIframeHeight();
+        // fn is called for each series. should call it only once. `this` is the Series
+        if (this.index == this.chart.series.length - 1){
+            this.chart.redraw();
+            document.body.dispatchEvent(chartLoaded);
+            console.log('resize iframe');
+            adjustIframeHeight();
+        }
     });
     extendObj(options, ['plotOptions','line','dataLabels','formatter'], function(){
         var that = this;
