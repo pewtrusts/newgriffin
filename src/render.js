@@ -1,5 +1,5 @@
 /* global API_HOST API_ENDPOINT_GET_CHART */
-import {init} from './griffin.js';
+import {init, extendObj} from './griffin.js';
 import './css/griffin-styles.scss';
 import '../submodules/shared-css/styles.css';
 const griffinImages = document.querySelectorAll('.js-griffin-image');
@@ -20,13 +20,22 @@ async function getChartData({chartIDs, data, publishedFlags}){
 async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail}){
     const chartData = await getChartData({chartIDs, data, publishedFlags});
     if (isForThumbnail){
-        
-        chartData[0].chartData.highchartsConfig.responsive.rules.push({chartOptions:{legend:{enabled:false}},condition:{minWidth:1}})
-        if (chartData[0].imageMargins && typeof chartData[0].chartData.highchartsConfig.chart == 'string' && chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
+        /**
+         * the griffin chart tool renders charts in puppeteer and screenshots images of them. the thumbnail image
+         * appears in the chart tool itself and works best without the legend so that the focus is on the chart
+         * code below disables the legend, makes sure any responsive rules don't overrule the disabling, and adjusts
+         * the height of the chart so that the graph is the same size as it is with the legend.
+         */
+        chartData[0].chartData.highchartsConfig.legend.enabled = false;
+        for ( var i = 0; i < chartData[0].chartData.highchartsConfig.responsive.rules.length; i++){
+            extendObj(chartData[0].chartData.highchartsConfig.responsive.rules[i], ['chartOptions','legend','enabled'], false)
+        }
+        //chartData[0].chartData.highchartsConfig.responsive.rules.push({chartOptions:{legend:{enabled:false}},condition:{minWidth:1}})
+        if (chartData[0].imageMargins && typeof chartData[0].chartData.highchartsConfig.chart.height == 'string' && chartData[0].chartData.highchartsConfig.chart.height.includes('%')){
             let height = Math.round(366 * parseFloat(chartData[0].chartData.highchartsConfig.chart.height) / 100);
             chartData[0].chartData.highchartsConfig.chart.height = height - chartData[0].imageMargins.mobile.mbLegendHeight;
         } else if (chartData[0].imageMargins){
-            chartData[0].chartData.highchartsConfig.chart.height = chartData[0].chartData.highchartsConfig.chart.height - chartData[0].imageMargins.mobile.mbLegendHeight;   
+            chartData[0].chartData.highchartsConfig.chart.height = +chartData[0].chartData.highchartsConfig.chart.height - chartData[0].imageMargins.mobile.mbLegendHeight;   
         }
 
     }
