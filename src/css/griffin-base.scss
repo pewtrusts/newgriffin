@@ -136,10 +136,19 @@ img.fullscreen {
     .highcharts-markers {
       display: none;
     }
+    .highcharts-markers.highcharts-scatter-series {
+      display: inline;
+    }
     
     .highcharts-markers path {
       fill: #fff;
       stroke-width: 3px
+    }
+    &.scatter .highcharts-yaxis .highcharts-axis-line {
+        stroke-width: 1;
+    }
+    &.scatter .highcharts-grid {
+        display: none;
     }
   }
 
@@ -222,9 +231,9 @@ img.fullscreen {
 .highcharts-data-label text, text.highcharts-data-label {
   fill: inherit;
 }
-.highcharts-grid-line {
-  stroke: #000;
-  stroke-opacity: 35%;
+.highcharts-grid-line, .highcharts-axis-line {
+  stroke: #a7a7a7;
+  
 }
 .last-label-only .highcharts-data-label:not(.last-datalabel){
   visibility: hidden;
