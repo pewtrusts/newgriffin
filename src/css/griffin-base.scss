@@ -15,6 +15,7 @@ a:hover {
 }
 .griffin-figure {
   position: relative;
+  page-break-inside: avoid;
 }
 .griffin-unpublished-link {
   position: absolute;
