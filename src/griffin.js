@@ -47,7 +47,7 @@ export function beforeRenderExtensions(options, config){
         var chartLoaded = new CustomEvent('chartLoaded', {bubbles: true});
         // fn is called for each series. should call it only once. `this` is the Series
         if (this.index == this.chart.series.length - 1){
-            this.chart.redraw();
+            // this.chart.redraw();
             document.body.dispatchEvent(chartLoaded);
             console.log('resize iframe');
             adjustIframeHeight();
