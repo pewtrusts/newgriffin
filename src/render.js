@@ -6,20 +6,25 @@ const griffinImages = document.querySelectorAll('.js-griffin-image');
 const chartIDs = Array.from(griffinImages).map(img => img.dataset.id);
 const griffinTypes = Array.from(griffinImages).map(img => img.dataset.griffinType);
 const slot = document.querySelector('#chart-slot');
-async function getChartData({chartIDs, data, publishedFlags, project}){
-    const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
-        method: 'POST',
-        body: JSON.stringify({
-            chartIDs,
-            data,
-            publishedFlags,
-            project
-        })
-    });
-    return response.json();
+async function getChartData({chartIDs, data, publishedFlags, project, isFromParam}){
+    if (isFromParam) {
+        const response = await fetch(API_HOST + API_ENDPOINT_GET_CHART, {
+            method: 'POST',
+            body: JSON.stringify({
+                chartIDs,
+                data,
+                publishedFlags,
+                project
+            })
+        });
+        return response.json();
+    }
+    if (window.globalChartData) {
+        return window.globalChartData;
+    }
 }
 async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [], isForThumbnail, project}){
-    const chartData = await getChartData({chartIDs, data, publishedFlags, project});
+    const chartData = await getChartData({chartIDs, data, publishedFlags, project, isFromParam});
     if (isForThumbnail){
         /**
          * the griffin chart tool renders charts in puppeteer and screenshots images of them. the thumbnail image
