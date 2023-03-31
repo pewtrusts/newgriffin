@@ -186,9 +186,12 @@ export function initSingleGriffin(griffin, i, _parent){
     var sourceNote = parent.querySelector('.js-griffin-credit');
     var pictureContainer = parent.querySelector('.js-picture-container');
     var imageSource = pictureContainer.querySelector('img') ? pictureContainer.querySelector('img').src : '';
+    var mobileImageSource = pictureContainer.querySelector('img.mobile') ? pictureContainer.querySelector('img.mobile').src : '';
     var anchor = parent.querySelector('.js-griffin-anchor');
     var isLazy = parent.classList.contains('js-griffin--lazy');
     var imageLink;
+    var mobileImageLink;
+
     if (isLazy){
         parent.classList.add('lazy-load--ready');
     }
@@ -201,6 +204,15 @@ export function initSingleGriffin(griffin, i, _parent){
         imageLink.href = imageSource
         imageLink.addEventListener('click', getImage);
         sourceNote.insertAdjacentElement('beforeend', imageLink);
+        mobileImageLink = document.createElement('a');
+        mobileImageLink.textContent = 'View image';
+        mobileImageLink.className = 'griffin-download-btn';
+        mobileImageLink.classList.add('mobile')
+        mobileImageLink.setAttribute('data-index', i);
+        mobileImageLink.setAttribute('target', '_blank');
+        mobileImageLink.href = mobileImageSource
+        mobileImageLink.addEventListener('click', getImage);
+        sourceNote.insertAdjacentElement('beforeend', mobileImageLink);
         parent.hasDownload = true;
 
     }

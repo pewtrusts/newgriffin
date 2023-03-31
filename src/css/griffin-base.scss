@@ -39,12 +39,24 @@ a:hover {
 img.fullscreen {
   display: none;
 }
+.griffin-download-btn {
+  display: none;
+}
+.griffin-download-btn.mobile {
+  display: inline;
+}
 @media screen and (min-width: 504px){
   img.fullscreen {
     display: inline;
   }
   img.mobile {
     display: none;
+  }
+  .griffin-download-btn.mobile {
+    display: none;
+  }
+  .griffin-download-btn {
+    display: inline
   }
 }
 .griffin-figure figcaption p:first-child {

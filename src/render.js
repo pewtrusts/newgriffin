@@ -55,14 +55,15 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [],
 function renderFromImages(chartData){
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
-        const mobileImg = document.getElementById('mobile-' + img.dataset.id)
+        // const mobileImg = document.getElementById('mobile-' + img.dataset.id)
         slot.insertAdjacentHTML('beforeend', chartData[i].template);
         img.insertAdjacentElement('beforebegin', slot);
+        const mobileImg = img.nextElementSibling
         const picContainer = slot.querySelector('.js-picture-container');
         img.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.top + '%' : 0;
         img.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.fullWidth.bottom + '%' : 0;
         img.classList.add('fullscreen');
-        mobileImg.src = img.src.replace('.png','-mobile.png');
+        // mobileImg.src = img.src.replace('.png','-mobile.png');
         mobileImg.style.marginTop = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.top + '%' : 0;
         mobileImg.style.marginBottom = chartData[i].imageMargins ? '-' + chartData[i].imageMargins.mobile.bottom + '%' : 0;
         picContainer.appendChild(img);
