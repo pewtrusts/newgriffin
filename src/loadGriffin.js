@@ -19,6 +19,7 @@
         hcAnnotations.setAttribute('src','https://code.highcharts.com/9.3/modules/annotations.js');
         griffin = document.createElement('script');
         griffin.setAttribute('src','/-/media/data-visualizations/interactives/griffin-v5_1/griffin.js');
+        griffin.async = false;
         document.head.appendChild(hcStyles);
         document.head.appendChild(griffinStyles);
         document.head.appendChild(hc);
