@@ -28,7 +28,7 @@ export default function _returnFormatter(format, context, decimals){
         case 'percentage':
             return function _percentage() {
                 var maxDecimals = returnMaxDecimals.call(this);
-                var value = this.value !== undefined ? this.value : this.y;
+                var value = this.value !== undefined ? this.value : this.y !== undefined ? this.y : this;
                 // TO DO  figure out decimals programmatically
                 var rtn = value === 0 ? '0%' : Highcharts.numberFormat(value * 100, decimals !== undefined ? decimals : Math.max(maxDecimals - 2, 0)) + '%';
                 return rtn;

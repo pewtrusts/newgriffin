@@ -1,13 +1,981 @@
 <head>
     <title>Local testing</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        #pew-app {
+            max-width: 990px;
+            margin: 0 auto;
+        }
+        .tilemap .highcharts-color-0 {
+    stroke: transparent;
+}
+
+:global(.highcharts-container.griffin .highcharts-data-label) {
+  font-size: .65rem;
+}
+/* // .last-label-only .highcharts-data-label:not(.last-datalabel){
+//   visibility: visible;
+// }  */
+
+:global(.map-label .highcharts-annotation-label-box) {
+ fill: white;
+ stroke: white;
+}
+
+/* :global(.highcharts-tooltip) {
+  background-color: #f7f7f7;
+  padding: 7px
+} */
+
+.html-tooltip {
+    padding: 6px;
+    background-color: #f7f7f7;
+}
+
+
+.highcharts-legend-series-active g.highcharts-series:not(.highcharts-series-hover), .highcharts-legend-point-active .highcharts-point:not(.highcharts-point-hover), .highcharts-legend-series-active .highcharts-markers:not(.highcharts-series-hover), .highcharts-legend-series-active .highcharts-data-labels:not(.highcharts-series-hover) {
+  opacity: inherit;
+}
+/* // .highcharts-tilemap-series.highcharts-color-0 {
+//   stroke: #ffffff;
+// } */
+
+.highcharts-heatmap-series .highcharts-point, .highcharts-tilemap-series .highcharts-point {
+  stroke-width: 2;
+  stroke: #fff;
+}
+
+.highcharts-tilemap-series .highcharts-data-label text {
+  text-shadow: none;
+}
+
+g.highcharts-data-labels.highcharts-tilemap-series {
+    stroke-width: 0;
+}
+
+/* need to make sure this doesn't need more specificity */
+/* .highcharts-halo {
+  display: none;
+} */
+
+/* this likely doesn't need to be more specific since it only applies to styledMode: false charts */
+g.highcharts-label.highcharts-tooltip.highcharts-color-0 {
+  stroke-width: 0;
+}
+
+
+@media screen and (max-width: 500px) {
+  .highcharts-heatmap-series .highcharts-point, .highcharts-tilemap-series .highcharts-point {
+  stroke-width: 0;
+}
+    .mobile-hide {
+    display: none;
+  }
+}
+    </style>
+<% for (var css in htmlWebpackPlugin.files.css) { %>
+<link class="emitted-css" href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+<% } %>
 </head>
 
 <div id="pew-app" class="pct-section no-js">
-    
-    <% for (var css in htmlWebpackPlugin.files.css) { %>
-    <link class="emitted-css" href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
-    <% } %>
+    <h1>Local Testing</h1>
+
+
+    <img style="max-width:100%;display:none;margin-bottom:1.125rem;" loading="lazy" data-griffin-type="dynamic" data-id="b17a378c-7a3d-42ae-bbde-4b52bb90b568" class="fullscreen griffin-image js-griffin-image" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568-published.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568.png'" />
+    <img style="max-width:100%;width:366px;margin-bottom:1.125rem;" loading="lazy" class="mobile griffin-image" id="mobile-b17a378c-7a3d-42ae-bbde-4b52bb90b568" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568-published-mobile.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568-mobile.png'" />
+
+
+    <script>
+       var globalChartData = globalChartData || [];
+
+globalChartData.push(
+    {
+    "template": "<figure data-id=\"b17a378c-7a3d-42ae-bbde-4b52bb90b568\"  data-title=\"chart\" style=\"max-width:650px;margin-left:auto;margin-right:auto;\" aria-describedby=\"chartDescription-5381\" class=\"default examples  has-legend legend-position-bottom griffin-unpublished ai2html-griffin-figure griffin-figure js-_griffin js-griffin\">\n        <a class=\"griffin-anchor js-griffin-anchor\"></a>\n        <a class=\"griffin-unpublished-link\" href=\"http://localhost:8081?id=b17a378c-7a3d-42ae-bbde-4b52bb90b568\" target=\"_blank\">Unpublished</a>\n        <meta name=\"format-detection\" content=\"telephone=no\">\n        <div class=\"griffin-outer-container griffin-outer-container--1-up\">\n            <div class=\"js-griffin-container griffin-container\">\n              <div aria-hidden=\"true\" class=\"js-hc-container hc-container undefined\">\n                    </div>\n                </div>\n        </div>\n        <div class=\"picture-container js-picture-container\">\n            \n        </div>\n        \n        <figcaption>\n            <p class=\"figure-note figure-note--source js-griffin-credit\">\n                © 2023 The Pew Charitable Trusts\n            </p>\n        </figcaption>\n    </figure>",
+    "chartData": {
+        "highchartsConfig": {
+            "chart": {
+                "height": "80%",
+                "className": "griffin default examples  tilemap",
+                "type": "tilemap",
+                "spacingRight": 20,
+                "spacingTop": 10,
+                "spacingBottom": 15,
+                "spacingLeft": 10,
+            },
+            "series": [
+                {
+                    "name": "value",
+                    "data": [
+                        {
+                            "state": "AK",
+                            "name": "Alaska",
+                            "region": "West",
+                            "x": 0,
+                            "y": 0,
+                            "value": "-3.2"
+                        },
+                        {
+                            "state": "WA",
+                            "name": "Washington",
+                            "region": "West",
+                            "x": 2,
+                            "y": 0,
+                            "value": "-1.7"
+                        },
+                        {
+                            "state": "OR",
+                            "name": "Oregon",
+                            "region": "West",
+                            "x": 4,
+                            "y": 0,
+                            "value": "0.6"
+                        },
+                        {
+                            "state": "HI",
+                            "name": "Hawaii",
+                            "region": "West",
+                            "x": 8,
+                            "y": 0,
+                            "value": "-2.7"
+                        },
+                        {
+                            "state": "MT",
+                            "name": "Montana",
+                            "region": "West",
+                            "x": 2,
+                            "y": 1,
+                            "value": "-1.7"
+                        },
+                        {
+                            "state": "ID",
+                            "name": "Idaho",
+                            "region": "West",
+                            "x": 3,
+                            "y": 1,
+                            "value": "-2.4"
+                        },
+                        {
+                            "state": "NV",
+                            "name": "Nevada",
+                            "region": "West",
+                            "x": 4,
+                            "y": 1,
+                            "value": "-1"
+                        },
+                        {
+                            "state": "CA",
+                            "name": "California",
+                            "region": "West",
+                            "x": 5,
+                            "y": 1,
+                            "value": "0.1"
+                        },
+                        {
+                            "state": "ND",
+                            "name": "North Dakota",
+                            "region": "Midwest",
+                            "x": 2,
+                            "y": 2,
+                            "value": "-2"
+                        },
+                        {
+                            "state": "WY",
+                            "name": "Wyoming",
+                            "region": "West",
+                            "x": 3,
+                            "y": 2,
+                            "value": "-1.9"
+                        },
+                        {
+                            "state": "CO",
+                            "name": "Colorado",
+                            "region": "West",
+                            "x": 4,
+                            "y": 2,
+                            "value": "1.3"
+                        },
+                        {
+                            "state": "AZ",
+                            "name": "Arizona",
+                            "region": "West",
+                            "x": 5,
+                            "y": 2,
+                            "value": "0.9"
+                        },
+                        {
+                            "state": "NM",
+                            "name": "New Mexico",
+                            "region": "West",
+                            "x": 6,
+                            "y": 2,
+                            "value": "-4.6"
+                        },
+                        {
+                            "state": "MN",
+                            "name": "Minnesota",
+                            "region": "Midwest",
+                            "x": 2,
+                            "y": 3,
+                            "value": "0.2"
+                        },
+                        {
+                            "state": "SD",
+                            "name": "South Dakota",
+                            "region": "Midwest",
+                            "x": 3,
+                            "y": 3,
+                            "value": "-2.8"
+                        },
+                        {
+                            "state": "NE",
+                            "name": "Nebraska",
+                            "region": "Midwest",
+                            "x": 4,
+                            "y": 3,
+                            "value": "0.8"
+                        },
+                        {
+                            "state": "UT",
+                            "name": "Utah",
+                            "region": "West",
+                            "x": 5,
+                            "y": 3,
+                            "value": "-1.2"
+                        },
+                        {
+                            "state": "OK",
+                            "name": "Oklahoma",
+                            "region": "South",
+                            "x": 6,
+                            "y": 3,
+                            "value": "0.8"
+                        },
+                        {
+                            "state": "TX",
+                            "name": "Texas",
+                            "region": "South",
+                            "x": 7,
+                            "y": 3,
+                            "value": "0.6"
+                        },
+                        {
+                            "state": "WI",
+                            "name": "Wisconsin",
+                            "region": "Midwest",
+                            "x": 2,
+                            "y": 4,
+                            "value": "0.1"
+                        },
+                        {
+                            "state": "IA",
+                            "name": "Iowa",
+                            "region": "Midwest",
+                            "x": 3,
+                            "y": 4,
+                            "value": "0.5"
+                        },
+                        {
+                            "state": "MO",
+                            "name": "Missouri",
+                            "region": "Midwest",
+                            "x": 4,
+                            "y": 4,
+                            "value": "0.1"
+                        },
+                        {
+                            "state": "KS",
+                            "name": "Kansas",
+                            "region": "Midwest",
+                            "x": 5,
+                            "y": 4,
+                            "value": "-0.5"
+                        },
+                        {
+                            "state": "LA",
+                            "name": "Louisiana",
+                            "region": "South",
+                            "x": 6,
+                            "y": 4,
+                            "value": "-1.9"
+                        },
+                        {
+                            "state": "IL",
+                            "name": "Illinois",
+                            "region": "Midwest",
+                            "x": 3,
+                            "y": 5,
+                            "value": "0.2"
+                        },
+                        {
+                            "state": "KY",
+                            "name": "Kentucky",
+                            "region": "South",
+                            "x": 4,
+                            "y": 5,
+                            "value": "0.6"
+                        },
+                        {
+                            "state": "AR",
+                            "name": "Arkansas",
+                            "region": "South",
+                            "x": 5,
+                            "y": 5,
+                            "value": "-1.3"
+                        },
+                        {
+                            "state": "MS",
+                            "name": "Mississippi",
+                            "region": "South",
+                            "x": 6,
+                            "y": 5,
+                            "value": "-1.5"
+                        },
+                        {
+                            "state": "MI",
+                            "name": "Michigan",
+                            "region": "Midwest",
+                            "x": 2,
+                            "y": 6,
+                            "value": "3.4"
+                        },
+                        {
+                            "state": "IN",
+                            "name": "Indiana",
+                            "region": "Midwest",
+                            "x": 3,
+                            "y": 6,
+                            "value": "0.4"
+                        },
+                        {
+                            "state": "WV",
+                            "name": "West Virginia",
+                            "region": "South",
+                            "x": 4,
+                            "y": 6,
+                            "value": "2"
+                        },
+                        {
+                            "state": "TN",
+                            "name": "Tennessee",
+                            "region": "South",
+                            "x": 5,
+                            "y": 6,
+                            "value": "0.7"
+                        },
+                        {
+                            "state": "AL",
+                            "name": "Alabama",
+                            "region": "South",
+                            "x": 6,
+                            "y": 6,
+                            "value": "-0.8"
+                        },
+                        {
+                            "state": "OH",
+                            "name": "Ohio",
+                            "region": "Midwest",
+                            "x": 3,
+                            "y": 7,
+                            "value": "-0.6"
+                        },
+                        {
+                            "state": "MD",
+                            "name": "Maryland",
+                            "region": "South",
+                            "x": 4,
+                            "y": 7,
+                            "value": "1.4"
+                        },
+                        {
+                            "state": "VA",
+                            "name": "Virginia",
+                            "region": "South",
+                            "x": 5,
+                            "y": 7,
+                            "value": "-0.5"
+                        },
+                        {
+                            "state": "SC",
+                            "name": "South Carolina",
+                            "region": "South",
+                            "x": 6,
+                            "y": 7,
+                            "value": "-0.2"
+                        },
+                        {
+                            "state": "GA",
+                            "name": "Georgia",
+                            "region": "South",
+                            "x": 7,
+                            "y": 7,
+                            "value": "-1.8"
+                        },
+                        {
+                            "state": "FL",
+                            "name": "Florida",
+                            "id": "FL",
+                            "region": "South",
+                            "x": 8,
+                            "y": 7,
+                            "value": "-1.6"
+                        },
+                        {
+                            "state": "NY",
+                            "name": "New York",
+                            "region": "Northeast",
+                            "x": 2,
+                            "y": 8,
+                            "value": "-0.3"
+                        },
+                        {
+                            "state": "PA",
+                            "name": "Pennsylvania",
+                            "region": "Northeast",
+                            "x": 3,
+                            "y": 8,
+                            "value": "0.2"
+                        },
+                        {
+                            "state": "DE",
+                            "name": "Delaware",
+                            "region": "South",
+                            "x": 4,
+                            "y": 8,
+                            "value": "1.2"
+                        },
+                        {
+                            "state": "NC",
+                            "name": "North Carolina",
+                            "region": "South",
+                            "x": 5,
+                            "y": 8,
+                            "value": "-0.2"
+                        },
+                        {
+                            "state": "VT",
+                            "name": "Vermont",
+                            "region": "Northeast",
+                            "x": 1,
+                            "y": 9,
+                            "value": "1"
+                        },
+                        {
+                            "state": "MA",
+                            "name": "Massachusetts",
+                            "region": "Northeast",
+                            "x": 2,
+                            "y": 9,
+                            "value": "2.2"
+                        },
+                        {
+                            "state": "NJ",
+                            "name": "New Jersey",
+                            "region": "Northeast",
+                            "x": 3,
+                            "y": 9,
+                            "value": "2.4"
+                        },
+                        {
+                            "state": "ME",
+                            "name": "Maine",
+                            "region": "Northeast",
+                            "x": 0,
+                            "y": 10,
+                            "value": "1.5"
+                        },
+                        {
+                            "state": "NH",
+                            "name": "New Hampshire",
+                            "region": "Northeast",
+                            "x": 1,
+                            "y": 10,
+                            "value": "1.3"
+                        },
+                        {
+                            "state": "RI",
+                            "name": "Rhode Island",
+                            "region": "Northeast",
+                            "x": 2,
+                            "y": 10,
+                            "value": "-0.4"
+                        },
+                        {
+                            "state": "CT",
+                            "name": "Connecticut",
+                            "region": "Northeast",
+                            "x": 3,
+                            "y": 10,
+                            "value": "1.9"
+                        },
+                        {
+                            "state": "DC",
+                            "name": "District of Columbia",
+                            "region": "South",
+                            "x": 5,
+                            "y": 10,
+                            "value": 2
+                        }
+                    ],
+                    "marker": {
+                        "radius": 4,
+                        "symbol": "circle"
+                    },
+                    "colorIndex": 0
+                }
+            ],
+            "plotOptions": {
+                "series": {
+                    "dataLabels": {
+                        "enabled": false
+                    }
+                },
+                "pie": {
+                    "startAngle": 0
+                }
+            },
+            "tooltip": {
+                "useHTML": true,
+                "padding": 1,
+                "headerFormat": ""
+                },
+            "legend": {
+                "align": "left",
+                "enabled": true,
+                "layout": "horizontal",
+                "verticalAlign": "bottom",
+                "reversed": false
+            },
+            "xAxis": {
+                "startOfWeek": 1,
+                "plotBands": [],
+                "plotLines": [],
+                "categories": [
+                    "AK",
+                    "WA",
+                    "OR",
+                    "HI",
+                    "MT",
+                    "ID",
+                    "NV",
+                    "CA",
+                    "ND",
+                    "WY",
+                    "CO",
+                    "AZ",
+                    "NM",
+                    "MN",
+                    "SD",
+                    "NE",
+                    "UT",
+                    "OK",
+                    "TX",
+                    "WI",
+                    "IA",
+                    "MO",
+                    "KS",
+                    "LA",
+                    "IL",
+                    "KY",
+                    "AR",
+                    "MS",
+                    "MI",
+                    "IN",
+                    "WV",
+                    "TN",
+                    "AL",
+                    "OH",
+                    "MD",
+                    "VA",
+                    "SC",
+                    "GA",
+                    "FL",
+                    "NY",
+                    "PA",
+                    "DE",
+                    "NC",
+                    "VT",
+                    "MA",
+                    "NJ",
+                    "ME",
+                    "NH",
+                    "RI",
+                    "CT",
+                    "DC"
+                ],
+                "title": {
+                    "text": "state"
+                },
+                "reversedStacks": false,
+                "type": "categorical",
+                "labels": {}
+            },
+   
+            // "yAxis": [
+            //     {
+            //         "labels": {},
+            //         "title": {}
+            //     }
+            // ],
+            "yAxis": {
+                "visible": false
+            },
+            "responsive": {
+                "rules": [
+                    {
+                        "chartOptions": {
+                            "chart": {
+                                "height": "100%"
+                            }
+                        },
+                        "condition": {
+                            "maxWidth": 417
+                        }
+                    }
+                ]
+            }
+        },
+        "griffinConfig": {
+            "MaxWidth": "650",
+            "DesktopHeight": "56.25%",
+            "ChartProject": "Examples",
+            "DatatableData": [
+                [
+                    "state",
+                    "value"
+                ],
+                [
+                    "AK",
+                    -3.2
+                ],
+                [
+                    "WA",
+                    -1.7
+                ],
+                [
+                    "OR",
+                    0.6
+                ],
+                [
+                    "HI",
+                    -2.7
+                ],
+                [
+                    "MT",
+                    -1.7
+                ],
+                [
+                    "ID",
+                    -2.4
+                ],
+                [
+                    "NV",
+                    -1
+                ],
+                [
+                    "CA",
+                    0.1
+                ],
+                [
+                    "ND",
+                    -2
+                ],
+                [
+                    "WY",
+                    -1.9
+                ],
+                [
+                    "CO",
+                    1.3
+                ],
+                [
+                    "AZ",
+                    0.9
+                ],
+                [
+                    "NM",
+                    -4.6
+                ],
+                [
+                    "MN",
+                    0.2
+                ],
+                [
+                    "SD",
+                    -2.8
+                ],
+                [
+                    "NE",
+                    0.8
+                ],
+                [
+                    "UT",
+                    -1.2
+                ],
+                [
+                    "OK",
+                    0.8
+                ],
+                [
+                    "TX",
+                    0.6
+                ],
+                [
+                    "WI",
+                    0.1
+                ],
+                [
+                    "IA",
+                    0.5
+                ],
+                [
+                    "MO",
+                    0.1
+                ],
+                [
+                    "KS",
+                    -0.5
+                ],
+                [
+                    "LA",
+                    -1.9
+                ],
+                [
+                    "IL",
+                    0.2
+                ],
+                [
+                    "KY",
+                    0.6
+                ],
+                [
+                    "AR",
+                    -1.3
+                ],
+                [
+                    "MS",
+                    -1.5
+                ],
+                [
+                    "MI",
+                    3.4
+                ],
+                [
+                    "IN",
+                    0.4
+                ],
+                [
+                    "WV",
+                    2
+                ],
+                [
+                    "TN",
+                    0.7
+                ],
+                [
+                    "AL",
+                    -0.8
+                ],
+                [
+                    "OH",
+                    -0.6
+                ],
+                [
+                    "MD",
+                    1.4
+                ],
+                [
+                    "VA",
+                    -0.5
+                ],
+                [
+                    "SC",
+                    -0.2
+                ],
+                [
+                    "GA",
+                    -1.8
+                ],
+                [
+                    "FL",
+                    -1.6
+                ],
+                [
+                    "NY",
+                    -0.3
+                ],
+                [
+                    "PA",
+                    0.2
+                ],
+                [
+                    "DE",
+                    1.2
+                ],
+                [
+                    "NC",
+                    -0.2
+                ],
+                [
+                    "VT",
+                    1
+                ],
+                [
+                    "MA",
+                    2.2
+                ],
+                [
+                    "NJ",
+                    2.4
+                ],
+                [
+                    "ME",
+                    1.5
+                ],
+                [
+                    "NH",
+                    1.3
+                ],
+                [
+                    "RI",
+                    -0.4
+                ],
+                [
+                    "CT",
+                    1.9
+                ],
+                [
+                    "DC",
+                    2
+                ]
+            ],
+            "CustomColors": [],
+            "ChartCaption": "",
+            "ChartCredit": "© 2023 The Pew Charitable Trusts",
+            "ChartDescription": "",
+            "ChartLabel": "",
+            "ChartNotes": "",
+            "ChartTitle": "",
+            "ChartSources": "",
+            "ChartSubtitle": "",
+            "ColorIndeces": [
+                0,
+                1,
+                2
+            ],
+            "DescriptionProxy": "chartDescription",
+            "LastLabelOnly": "",
+            "SelectedColorPalette": "default",
+            "NumberFormat": "percentage",
+            "OtherResponsive": [],
+            "PatternColors": [],
+            "LockHeight": true,
+            "CustomSettings": {
+                "chart": {
+                    "inverted": true,
+                    "styledMode": false
+                },
+                
+                "annotations": [
+                    {
+                        "labels": [
+                            {
+                                "point": "FL",
+                                "text": "US Average: 1%",
+                                "className": "map-label",
+                                "x": 150,
+                                "y": 20,
+                                "shape": "rect",
+                                "padding": 0,
+                                "borderWidth": 0,
+                                "style": {
+                                    "color": "black"
+                                }
+                            }
+                        ],
+                        "labelOptions": {
+                            "borderColor": "#ff11ff",
+                            "borderRadius": 3
+                        }
+                    }
+                ],
+                
+                "colorAxis": {
+                    "dataClasses": [
+                        {
+                            "to": -1.6,
+                            "color": "#f47d4b",
+                            "name": "Below -1.5%"
+                        },
+                        {
+                            "from": -1.5,
+                            "to": -0.1,
+                            "color": "#f8a982",
+                            "name": "-1.5% to 0"
+                        },
+                        {
+                            "from": 0,
+                            "to": 1.5,
+                            "color": "#7fd3eb",
+                            "name": "0% to 1.5"
+                        },
+                        {
+                            "from": 1.6,
+                            "color": "#1571b9",
+                            "name": "Above 1.5%"
+                        }
+                    ]
+                },
+                "xAxis": {
+                    "visible": false
+                },
+                
+                "plotOptions": {
+                    "series": {
+                        "states": {
+                            "hover": {
+                                "halo": null,
+                                "color": null,
+                                "brightness": 0.1
+                            }
+                        },
+                      
+                       
+                        "pointPadding": 1,
+                        "dataLabels": {
+                            "enabled": true,
+                            "format": '<div class="datalabel">{point.state}<span class="mobile-hide"><br>{point.value}%</span></div>',
+                            "useHTML": true,
+                            "style": {
+                                "textOutline": false,
+                                "lineWidth": 5,
+                                "textAlign": "center",
+                                "fontSize": "12px"
+                            }
+                        }
+                    }
+                }
+            },
+            "PrintWidth": 832,
+            "PrintHeight": 468,
+            "PrintChartResponsiveRules": [],
+            "AxisOverride": "datetime"
+        }
+    },
+    "imageMargins": {
+        "fullWidth": {
+            "top": 0,
+            "bottom": 2.6153846153846154
+        },
+        "mobile": {
+            "top": 0,
+            "bottom": 4.098360655737705,
+            "mbLegendHeight": 61
+        }
+    }
+}
+)
+  </script>
     <!-- <figure>
         <figcaption class="chart-title">Percentage of State Revenue by Source, FY 2021</figcaption>
         <p class="chart-dek">Select revenue sources below to highlight them and resort the chart: <button class="pew-blue-button" id="reset-button" role="button">reset</button></p>
@@ -23,8 +991,906 @@
 
     </figure> -->
 
+
+<h2>Control</h2>
+
+<img style="max-width:100%;display:none;margin-bottom:1.125rem;" loading="lazy" data-griffin-type="dynamic" data-id="b17a378c-7a3d-42ae-bbde-4b52bb90b568a" class="fullscreen griffin-image js-griffin-image" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568a-published.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568a.png'" />
+<img style="max-width:100%;width:366px;margin-bottom:1.125rem;" loading="lazy" class="mobile griffin-image" id="mobile-b17a378c-7a3d-42ae-bbde-4b52bb90b568a" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568a-published-mobile.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b17a378c-7a3d-42ae-bbde-4b52bb90b568a-mobile.png'" />
+
+
+<script>
+   var globalChartData = globalChartData || [];
+
+globalChartData.push(
+{
+"template": "<figure data-id=\"b17a378c-7a3d-42ae-bbde-4b52bb90b568a\"  data-title=\"chart\" style=\"max-width:650px;margin-left:auto;margin-right:auto;\" aria-describedby=\"chartDescription-5381\" class=\"default examples  has-legend legend-position-bottom griffin-unpublished ai2html-griffin-figure griffin-figure js-_griffin js-griffin\">\n        <a class=\"griffin-anchor js-griffin-anchor\"></a>\n        <a class=\"griffin-unpublished-link\" href=\"http://localhost:8081?id=b17a378c-7a3d-42ae-bbde-4b52bb90b568\" target=\"_blank\">Unpublished</a>\n        <meta name=\"format-detection\" content=\"telephone=no\">\n        <div class=\"griffin-outer-container griffin-outer-container--1-up\">\n            <div class=\"js-griffin-container griffin-container\">\n              <div aria-hidden=\"true\" class=\"js-hc-container hc-container undefined\">\n                    </div>\n                </div>\n        </div>\n        <div class=\"picture-container js-picture-container\">\n            \n        </div>\n        \n        <figcaption>\n            <p class=\"figure-note figure-note--source js-griffin-credit\">\n                © 2023 The Pew Charitable Trusts\n            </p>\n        </figcaption>\n    </figure>",
+"chartData": {
+    "highchartsConfig": {
+        "chart": {
+            "height": 300,
+            "className": "griffin default examples  tilemap",
+            "type": "tilemap",
+            "spacingRight": 20,
+            "spacingTop": 10,
+            "spacingBottom": 15,
+            "spacingLeft": 10,
+            "styledMode": false
+        },
+        "series": [
+            {
+                "name": "value",
+                "data": [
+                    {
+                        "state": "AK",
+                        "name": "Alaska",
+                        "region": "West",
+                        "x": 0,
+                        "y": 0,
+                        "value": "-3.2"
+                    },
+                    {
+                        "state": "WA",
+                        "name": "Washington",
+                        "region": "West",
+                        "x": 2,
+                        "y": 0,
+                        "value": "-1.7"
+                    },
+                    {
+                        "state": "OR",
+                        "name": "Oregon",
+                        "region": "West",
+                        "x": 4,
+                        "y": 0,
+                        "value": "0.6"
+                    },
+                    {
+                        "state": "HI",
+                        "name": "Hawaii",
+                        "region": "West",
+                        "x": 8,
+                        "y": 0,
+                        "value": "-2.7"
+                    },
+                    {
+                        "state": "MT",
+                        "name": "Montana",
+                        "region": "West",
+                        "x": 2,
+                        "y": 1,
+                        "value": "-1.7"
+                    },
+                    {
+                        "state": "ID",
+                        "name": "Idaho",
+                        "region": "West",
+                        "x": 3,
+                        "y": 1,
+                        "value": "-2.4"
+                    },
+                    {
+                        "state": "NV",
+                        "name": "Nevada",
+                        "region": "West",
+                        "x": 4,
+                        "y": 1,
+                        "value": "-1"
+                    },
+                    {
+                        "state": "CA",
+                        "name": "California",
+                        "region": "West",
+                        "x": 5,
+                        "y": 1,
+                        "value": "0.1"
+                    },
+                    {
+                        "state": "ND",
+                        "name": "North Dakota",
+                        "region": "Midwest",
+                        "x": 2,
+                        "y": 2,
+                        "value": "-2"
+                    },
+                    {
+                        "state": "WY",
+                        "name": "Wyoming",
+                        "region": "West",
+                        "x": 3,
+                        "y": 2,
+                        "value": "-1.9"
+                    },
+                    {
+                        "state": "CO",
+                        "name": "Colorado",
+                        "region": "West",
+                        "x": 4,
+                        "y": 2,
+                        "value": "1.3"
+                    },
+                    {
+                        "state": "AZ",
+                        "name": "Arizona",
+                        "region": "West",
+                        "x": 5,
+                        "y": 2,
+                        "value": "0.9"
+                    },
+                    {
+                        "state": "NM",
+                        "name": "New Mexico",
+                        "region": "West",
+                        "x": 6,
+                        "y": 2,
+                        "value": "-4.6"
+                    },
+                    {
+                        "state": "MN",
+                        "name": "Minnesota",
+                        "region": "Midwest",
+                        "x": 2,
+                        "y": 3,
+                        "value": "0.2"
+                    },
+                    {
+                        "state": "SD",
+                        "name": "South Dakota",
+                        "region": "Midwest",
+                        "x": 3,
+                        "y": 3,
+                        "value": "-2.8"
+                    },
+                    {
+                        "state": "NE",
+                        "name": "Nebraska",
+                        "region": "Midwest",
+                        "x": 4,
+                        "y": 3,
+                        "value": "0.8"
+                    },
+                    {
+                        "state": "UT",
+                        "name": "Utah",
+                        "region": "West",
+                        "x": 5,
+                        "y": 3,
+                        "value": "-1.2"
+                    },
+                    {
+                        "state": "OK",
+                        "name": "Oklahoma",
+                        "region": "South",
+                        "x": 6,
+                        "y": 3,
+                        "value": "0.8"
+                    },
+                    {
+                        "state": "TX",
+                        "name": "Texas",
+                        "region": "South",
+                        "x": 7,
+                        "y": 3,
+                        "value": "0.6"
+                    },
+                    {
+                        "state": "WI",
+                        "name": "Wisconsin",
+                        "region": "Midwest",
+                        "x": 2,
+                        "y": 4,
+                        "value": "0.1"
+                    },
+                    {
+                        "state": "IA",
+                        "name": "Iowa",
+                        "region": "Midwest",
+                        "x": 3,
+                        "y": 4,
+                        "value": "0.5"
+                    },
+                    {
+                        "state": "MO",
+                        "name": "Missouri",
+                        "region": "Midwest",
+                        "x": 4,
+                        "y": 4,
+                        "value": "0.1"
+                    },
+                    {
+                        "state": "KS",
+                        "name": "Kansas",
+                        "region": "Midwest",
+                        "x": 5,
+                        "y": 4,
+                        "value": "-0.5"
+                    },
+                    {
+                        "state": "LA",
+                        "name": "Louisiana",
+                        "region": "South",
+                        "x": 6,
+                        "y": 4,
+                        "value": "-1.9"
+                    },
+                    {
+                        "state": "IL",
+                        "name": "Illinois",
+                        "region": "Midwest",
+                        "x": 3,
+                        "y": 5,
+                        "value": "0.2"
+                    },
+                    {
+                        "state": "KY",
+                        "name": "Kentucky",
+                        "region": "South",
+                        "x": 4,
+                        "y": 5,
+                        "value": "0.6"
+                    },
+                    {
+                        "state": "AR",
+                        "name": "Arkansas",
+                        "region": "South",
+                        "x": 5,
+                        "y": 5,
+                        "value": "-1.3"
+                    },
+                    {
+                        "state": "MS",
+                        "name": "Mississippi",
+                        "region": "South",
+                        "x": 6,
+                        "y": 5,
+                        "value": "-1.5"
+                    },
+                    {
+                        "state": "MI",
+                        "name": "Michigan",
+                        "region": "Midwest",
+                        "x": 2,
+                        "y": 6,
+                        "value": "3.4"
+                    },
+                    {
+                        "state": "IN",
+                        "name": "Indiana",
+                        "region": "Midwest",
+                        "x": 3,
+                        "y": 6,
+                        "value": "0.4"
+                    },
+                    {
+                        "state": "WV",
+                        "name": "West Virginia",
+                        "region": "South",
+                        "x": 4,
+                        "y": 6,
+                        "value": "2"
+                    },
+                    {
+                        "state": "TN",
+                        "name": "Tennessee",
+                        "region": "South",
+                        "x": 5,
+                        "y": 6,
+                        "value": "0.7"
+                    },
+                    {
+                        "state": "AL",
+                        "name": "Alabama",
+                        "region": "South",
+                        "x": 6,
+                        "y": 6,
+                        "value": "-0.8"
+                    },
+                    {
+                        "state": "OH",
+                        "name": "Ohio",
+                        "region": "Midwest",
+                        "x": 3,
+                        "y": 7,
+                        "value": "-0.6"
+                    },
+                    {
+                        "state": "MD",
+                        "name": "Maryland",
+                        "region": "South",
+                        "x": 4,
+                        "y": 7,
+                        "value": "1.4"
+                    },
+                    {
+                        "state": "VA",
+                        "name": "Virginia",
+                        "region": "South",
+                        "x": 5,
+                        "y": 7,
+                        "value": "-0.5"
+                    },
+                    {
+                        "state": "SC",
+                        "name": "South Carolina",
+                        "region": "South",
+                        "x": 6,
+                        "y": 7,
+                        "value": "-0.2"
+                    },
+                    {
+                        "state": "GA",
+                        "name": "Georgia",
+                        "region": "South",
+                        "x": 7,
+                        "y": 7,
+                        "value": "-1.8"
+                    },
+                    {
+                        "state": "FL",
+                        "name": "Florida",
+                        "id": "FL",
+                        "region": "South",
+                        "x": 8,
+                        "y": 7,
+                        "value": "-1.6"
+                    },
+                    {
+                        "state": "NY",
+                        "name": "New York",
+                        "region": "Northeast",
+                        "x": 2,
+                        "y": 8,
+                        "value": "-0.3"
+                    },
+                    {
+                        "state": "PA",
+                        "name": "Pennsylvania",
+                        "region": "Northeast",
+                        "x": 3,
+                        "y": 8,
+                        "value": "0.2"
+                    },
+                    {
+                        "state": "DE",
+                        "name": "Delaware",
+                        "region": "South",
+                        "x": 4,
+                        "y": 8,
+                        "value": "1.2"
+                    },
+                    {
+                        "state": "NC",
+                        "name": "North Carolina",
+                        "region": "South",
+                        "x": 5,
+                        "y": 8,
+                        "value": "-0.2"
+                    },
+                    {
+                        "state": "VT",
+                        "name": "Vermont",
+                        "region": "Northeast",
+                        "x": 1,
+                        "y": 9,
+                        "value": "1"
+                    },
+                    {
+                        "state": "MA",
+                        "name": "Massachusetts",
+                        "region": "Northeast",
+                        "x": 2,
+                        "y": 9,
+                        "value": "2.2"
+                    },
+                    {
+                        "state": "NJ",
+                        "name": "New Jersey",
+                        "region": "Northeast",
+                        "x": 3,
+                        "y": 9,
+                        "value": "2.4"
+                    },
+                    {
+                        "state": "ME",
+                        "name": "Maine",
+                        "region": "Northeast",
+                        "x": 0,
+                        "y": 10,
+                        "value": "1.5"
+                    },
+                    {
+                        "state": "NH",
+                        "name": "New Hampshire",
+                        "region": "Northeast",
+                        "x": 1,
+                        "y": 10,
+                        "value": "1.3"
+                    },
+                    {
+                        "state": "RI",
+                        "name": "Rhode Island",
+                        "region": "Northeast",
+                        "x": 2,
+                        "y": 10,
+                        "value": "-0.4"
+                    },
+                    {
+                        "state": "CT",
+                        "name": "Connecticut",
+                        "region": "Northeast",
+                        "x": 3,
+                        "y": 10,
+                        "value": "1.9"
+                    },
+                    {
+                        "state": "DC",
+                        "name": "District of Columbia",
+                        "region": "South",
+                        "x": 5,
+                        "y": 10,
+                        "value": 2
+                    }
+                ],
+                "marker": {
+                    "radius": 4,
+                    "symbol": "circle"
+                },
+                "colorIndex": 0
+            }
+        ],
+        "plotOptions": {
+            "series": {
+                "dataLabels": {
+                    "enabled": false
+                }
+            },
+            "pie": {
+                "startAngle": 0
+            }
+        },
+        "legend": {
+            "align": "left",
+            "enabled": true,
+            "layout": "horizontal",
+            "verticalAlign": "bottom",
+            "reversed": false
+        },
+        "xAxis": {
+            "startOfWeek": 1,
+            "plotBands": [],
+            "plotLines": [],
+            "categories": [
+                "AK",
+                "WA",
+                "OR",
+                "HI",
+                "MT",
+                "ID",
+                "NV",
+                "CA",
+                "ND",
+                "WY",
+                "CO",
+                "AZ",
+                "NM",
+                "MN",
+                "SD",
+                "NE",
+                "UT",
+                "OK",
+                "TX",
+                "WI",
+                "IA",
+                "MO",
+                "KS",
+                "LA",
+                "IL",
+                "KY",
+                "AR",
+                "MS",
+                "MI",
+                "IN",
+                "WV",
+                "TN",
+                "AL",
+                "OH",
+                "MD",
+                "VA",
+                "SC",
+                "GA",
+                "FL",
+                "NY",
+                "PA",
+                "DE",
+                "NC",
+                "VT",
+                "MA",
+                "NJ",
+                "ME",
+                "NH",
+                "RI",
+                "CT",
+                "DC"
+            ],
+            "title": {
+                "text": "state"
+            },
+            "reversedStacks": false,
+            "type": "categorical",
+            "labels": {}
+        },
+        "tooltip": {},
+        "yAxis": [
+            {
+                "labels": {},
+                "title": {}
+            }
+        ],
+        "responsive": {
+            "rules": [
+                {
+                    "chartOptions": {
+                        "chart": {
+                            "height": "56.25%"
+                        }
+                    },
+                    "condition": {
+                        "minWidth": 417
+                    }
+                }
+            ]
+        }
+    },
+    "griffinConfig": {
+        "MaxWidth": "650",
+        "DesktopHeight": "56.25%",
+        "ChartProject": "Examples",
+        "DatatableData": [
+            [
+                "state",
+                "value"
+            ],
+            [
+                "AK",
+                -3.2
+            ],
+            [
+                "WA",
+                -1.7
+            ],
+            [
+                "OR",
+                0.6
+            ],
+            [
+                "HI",
+                -2.7
+            ],
+            [
+                "MT",
+                -1.7
+            ],
+            [
+                "ID",
+                -2.4
+            ],
+            [
+                "NV",
+                -1
+            ],
+            [
+                "CA",
+                0.1
+            ],
+            [
+                "ND",
+                -2
+            ],
+            [
+                "WY",
+                -1.9
+            ],
+            [
+                "CO",
+                1.3
+            ],
+            [
+                "AZ",
+                0.9
+            ],
+            [
+                "NM",
+                -4.6
+            ],
+            [
+                "MN",
+                0.2
+            ],
+            [
+                "SD",
+                -2.8
+            ],
+            [
+                "NE",
+                0.8
+            ],
+            [
+                "UT",
+                -1.2
+            ],
+            [
+                "OK",
+                0.8
+            ],
+            [
+                "TX",
+                0.6
+            ],
+            [
+                "WI",
+                0.1
+            ],
+            [
+                "IA",
+                0.5
+            ],
+            [
+                "MO",
+                0.1
+            ],
+            [
+                "KS",
+                -0.5
+            ],
+            [
+                "LA",
+                -1.9
+            ],
+            [
+                "IL",
+                0.2
+            ],
+            [
+                "KY",
+                0.6
+            ],
+            [
+                "AR",
+                -1.3
+            ],
+            [
+                "MS",
+                -1.5
+            ],
+            [
+                "MI",
+                3.4
+            ],
+            [
+                "IN",
+                0.4
+            ],
+            [
+                "WV",
+                2
+            ],
+            [
+                "TN",
+                0.7
+            ],
+            [
+                "AL",
+                -0.8
+            ],
+            [
+                "OH",
+                -0.6
+            ],
+            [
+                "MD",
+                1.4
+            ],
+            [
+                "VA",
+                -0.5
+            ],
+            [
+                "SC",
+                -0.2
+            ],
+            [
+                "GA",
+                -1.8
+            ],
+            [
+                "FL",
+                -1.6
+            ],
+            [
+                "NY",
+                -0.3
+            ],
+            [
+                "PA",
+                0.2
+            ],
+            [
+                "DE",
+                1.2
+            ],
+            [
+                "NC",
+                -0.2
+            ],
+            [
+                "VT",
+                1
+            ],
+            [
+                "MA",
+                2.2
+            ],
+            [
+                "NJ",
+                2.4
+            ],
+            [
+                "ME",
+                1.5
+            ],
+            [
+                "NH",
+                1.3
+            ],
+            [
+                "RI",
+                -0.4
+            ],
+            [
+                "CT",
+                1.9
+            ],
+            [
+                "DC",
+                2
+            ]
+        ],
+        "CustomColors": [],
+        "ChartCaption": "",
+        "ChartCredit": "© 2023 The Pew Charitable Trusts",
+        "ChartDescription": "",
+        "ChartLabel": "",
+        "ChartNotes": "",
+        "ChartTitle": "",
+        "ChartSources": "",
+        "ChartSubtitle": "",
+        "ColorIndeces": [
+            0,
+            1,
+            2
+        ],
+        "DescriptionProxy": "chartDescription",
+        "LastLabelOnly": "",
+        "SelectedColorPalette": "default",
+        "OtherResponsive": [],
+        "PatternColors": [],
+        "LockHeight": true,
+        "CustomSettings": {
+            "chart": {
+                "inverted": true,
+                "styledMode": false
+            },
+            "annotations": [
+                {
+                    "labels": [
+                        {
+                            "point": "FL",
+                            "text": "US Average: 1%",
+                            "className": "map-label",
+                            "x": 150,
+                            "y": 20,
+                            "shape": "rect",
+                            "padding": 0,
+                            "borderWidth": 0,
+                            "style": {
+                                "color": "black"
+                            }
+                        }
+                    ],
+                    "labelOptions": {
+                        "borderColor": "##ff11ff",
+                        "borderRadius": 3
+                    }
+                }
+            ],
+            "colorAxis": {
+                "dataClasses": [
+                    {
+                        "to": -1.6,
+                        "color": "#f47d4b",
+                        "name": "Below 1.5%"
+                    },
+                    {
+                        "from": -1.5,
+                        "to": -0.1,
+                        "color": "#f8a982",
+                        "name": "-1.5% to 0"
+                    },
+                    {
+                        "from": 0,
+                        "to": 1.5,
+                        "color": "#7fd3eb",
+                        "name": "0% to 1.5"
+                    },
+                    {
+                        "from": 1.6,
+                        "color": "#1571b9",
+                        "name": "Above 1.5%"
+                    }
+                ]
+            },
+            "xAxis": {
+                "visible": false
+            },
+            "plotOptions": {
+                "series": {
+                    "states": {
+                        "hover": {
+                            "halo": null,
+                            "color": null,
+                            "brightness": 0.1
+                        }
+                    },
+                    "margin": [
+                        0,
+                        35,
+                        0,
+                        0
+                    ],
+                    "shadow": {
+                        "offsetX": 0,
+                        "opacity": 0.6,
+                        "offsetY": 0,
+                        "width": 3,
+                        "color": "#fff"
+                    },
+                    "pointPadding": 1,
+                    "dataLabels": {
+                        "enabled": true,
+                        "align": "center",
+                        "format": "{point.state}<br>{point.value}%",
+                        "style": {
+                            "textOutline": false,
+                            "lineWidth": 5,
+                            "textAlign": "center",
+                            "fontSize": "12px"
+                        }
+                    }
+                }
+            }
+        },
+        "PrintWidth": 832,
+        "PrintHeight": 468,
+        "PrintChartResponsiveRules": [],
+        "AxisOverride": "datetime"
+    }
+},
+"imageMargins": {
+    "fullWidth": {
+        "top": 0,
+        "bottom": 2.6153846153846154
+    },
+    "mobile": {
+        "top": 0,
+        "bottom": 4.098360655737705,
+        "mbLegendHeight": 61
+    }
+}
+}
+)
+</script>
+
     <img style="max-width:100%;display:none;margin-bottom:1.125rem;" loading="lazy" data-griffin-type="dynamic" data-id="b5cdc26d-9fff-4070-bf24-7d95347838f1" class="fullscreen griffin-image js-griffin-image" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1-published.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1.png'" />
-<img style="max-width:100%;width:366px;margin-bottom:1.125rem;" loading="lazy" class="mobile griffin-image" id="mobile-b5cdc26d-9fff-4070-bf24-7d95347838f1" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1-published-mobile.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1-mobile.png'" />
+    <img style="max-width:100%;width:366px;margin-bottom:1.125rem;" loading="lazy" class="mobile griffin-image" id="mobile-b5cdc26d-9fff-4070-bf24-7d95347838f1" src="https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1-published-mobile.png" onerror="this.onerror=null;this.src='https://griffinimagestorage.blob.core.windows.net/griffinimagespub/b5cdc26d-9fff-4070-bf24-7d95347838f1-mobile.png'" />
 
 <script>
 var globalChartData = globalChartData || [];

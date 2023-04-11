@@ -6,6 +6,7 @@ import {addCustomPatterns} from './scripts/addCustomColorProperties';
 import returnFormatter from './scripts/return-number-formatter';
 import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
+import returnDataLabelFormatter from './scripts/return-datalabel-formatter';
 import hash from './scripts/hash';
 import {adjustIframeHeight} from './render';
 import defaultsDeep from 'lodash.defaultsdeep';
@@ -223,7 +224,8 @@ export function initSingleGriffin(griffin, i, _parent){
         returnPointFormatter({
             numberFormat: config.griffinConfig.NumberFormat,
             seriesLength: config.highchartsConfig.series.length,
-            decimals: config.griffinConfig.LabelDecimals
+            decimals: config.griffinConfig.LabelDecimals,
+            chartType: config.highchartsConfig.chart.type
         })
     );
     extendObj(config.highchartsConfig, ['legend', 'labelFormatter'], returnLegendFormatter(config.highchartsConfig.chart.type));
@@ -239,10 +241,27 @@ export function initSingleGriffin(griffin, i, _parent){
         extendObj(config.highchartsConfig, ['yAxis[0]', 'tickWidth'], 1);
         extendObj(config.highchartsConfig, ['xAxis', 'tickmarkPlacement'], 'on');
     }
+    if (config.highchartsConfig.chart.type == 'tilemap') {
+        config.highchartsConfig.yAxis = {}
+        config.highchartsConfig.yAxis.visible = false;
+        config.highchartsConfig.xAxis.visible = false;
+        config.highchartsConfig.chart.inverted = true;
+        config.highchartsConfig.chart.styledMode = false;
+        // we only need to extendObj if the property doesn't exist
+        extendObj(config.highchartsConfig, ['tooltip', 'useHTML'], true);
+        extendObj(config.highchartsConfig, ['plotOptions', 'series', 'dataLabels', 'formatter'], returnDataLabelFormatter({
+            numberFormat: config.griffinConfig.NumberFormat,
+            decimals: config.griffinConfig.LabelDecimals
+        })
+        );
+        config.highchartsConfig.tooltip.padding = 1;
+    } else {
+        config.highchartsConfig.yAxis.forEach(function (axis) {
+            axis.title.text = axis.title.text || null;
+        });
+    }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
-    config.highchartsConfig.yAxis.forEach(function (axis) {
-        axis.title.text = axis.title.text || null;
-    });
+
     if (config.griffinConfig.SelectedColorPalette == 'custom') {
         addCustomColorProperties({
             colors: config.griffinConfig.CustomColors,
