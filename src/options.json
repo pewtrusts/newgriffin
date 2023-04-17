@@ -36,7 +36,7 @@
                 "hover": {               
                     "halo": null,
                     "color": null,  
-                    "brightness": 0.1 
+                    "brightness": 0 
                 }
             },
             "tooltip": {

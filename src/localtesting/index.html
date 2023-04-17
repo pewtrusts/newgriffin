@@ -41,17 +41,17 @@
 // } */
 
 .highcharts-heatmap-series .highcharts-point, .highcharts-tilemap-series .highcharts-point {
-  stroke-width: 2;
-  stroke: #fff;
+  /* stroke-width: 2; */
+  /* stroke: #fff;   */
 }
 
 .highcharts-tilemap-series .highcharts-data-label text {
   text-shadow: none;
 }
 
-g.highcharts-data-labels.highcharts-tilemap-series {
+/* g.highcharts-data-labels.highcharts-tilemap-series {
     stroke-width: 0;
-}
+} */
 
 /* need to make sure this doesn't need more specificity */
 /* .highcharts-halo {
@@ -59,9 +59,9 @@ g.highcharts-data-labels.highcharts-tilemap-series {
 } */
 
 /* this likely doesn't need to be more specific since it only applies to styledMode: false charts */
-g.highcharts-label.highcharts-tooltip.highcharts-color-0 {
+/* g.highcharts-label.highcharts-tooltip.highcharts-color-0 {
   stroke-width: 0;
-}
+} */
 
 
 @media screen and (max-width: 500px) {
@@ -110,6 +110,7 @@ globalChartData.push(
                         {
                             "state": "AK",
                             "name": "Alaska",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 0,
                             "y": 0,
@@ -118,6 +119,7 @@ globalChartData.push(
                         {
                             "state": "WA",
                             "name": "Washington",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 2,
                             "y": 0,
@@ -126,6 +128,7 @@ globalChartData.push(
                         {
                             "state": "OR",
                             "name": "Oregon",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 4,
                             "y": 0,
@@ -134,6 +137,7 @@ globalChartData.push(
                         {
                             "state": "HI",
                             "name": "Hawaii",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 8,
                             "y": 0,
@@ -142,6 +146,7 @@ globalChartData.push(
                         {
                             "state": "MT",
                             "name": "Montana",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 2,
                             "y": 1,
@@ -150,6 +155,7 @@ globalChartData.push(
                         {
                             "state": "ID",
                             "name": "Idaho",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 3,
                             "y": 1,
@@ -158,6 +164,7 @@ globalChartData.push(
                         {
                             "state": "NV",
                             "name": "Nevada",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 4,
                             "y": 1,
@@ -166,6 +173,7 @@ globalChartData.push(
                         {
                             "state": "CA",
                             "name": "California",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 5,
                             "y": 1,
@@ -174,6 +182,7 @@ globalChartData.push(
                         {
                             "state": "ND",
                             "name": "North Dakota",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 2,
                             "y": 2,
@@ -182,6 +191,7 @@ globalChartData.push(
                         {
                             "state": "WY",
                             "name": "Wyoming",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 3,
                             "y": 2,
@@ -190,6 +200,7 @@ globalChartData.push(
                         {
                             "state": "CO",
                             "name": "Colorado",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 4,
                             "y": 2,
@@ -198,6 +209,7 @@ globalChartData.push(
                         {
                             "state": "AZ",
                             "name": "Arizona",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 5,
                             "y": 2,
@@ -206,6 +218,7 @@ globalChartData.push(
                         {
                             "state": "NM",
                             "name": "New Mexico",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 6,
                             "y": 2,
@@ -214,6 +227,7 @@ globalChartData.push(
                         {
                             "state": "MN",
                             "name": "Minnesota",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 2,
                             "y": 3,
@@ -222,6 +236,7 @@ globalChartData.push(
                         {
                             "state": "SD",
                             "name": "South Dakota",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 3,
                             "y": 3,
@@ -230,6 +245,7 @@ globalChartData.push(
                         {
                             "state": "NE",
                             "name": "Nebraska",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 4,
                             "y": 3,
@@ -238,6 +254,7 @@ globalChartData.push(
                         {
                             "state": "UT",
                             "name": "Utah",
+                            "colorIndex": 55,
                             "region": "West",
                             "x": 5,
                             "y": 3,
@@ -246,6 +263,7 @@ globalChartData.push(
                         {
                             "state": "OK",
                             "name": "Oklahoma",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 6,
                             "y": 3,
@@ -254,6 +272,7 @@ globalChartData.push(
                         {
                             "state": "TX",
                             "name": "Texas",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 7,
                             "y": 3,
@@ -262,6 +281,7 @@ globalChartData.push(
                         {
                             "state": "WI",
                             "name": "Wisconsin",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 2,
                             "y": 4,
@@ -270,6 +290,7 @@ globalChartData.push(
                         {
                             "state": "IA",
                             "name": "Iowa",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 3,
                             "y": 4,
@@ -278,6 +299,7 @@ globalChartData.push(
                         {
                             "state": "MO",
                             "name": "Missouri",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 4,
                             "y": 4,
@@ -286,6 +308,7 @@ globalChartData.push(
                         {
                             "state": "KS",
                             "name": "Kansas",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 5,
                             "y": 4,
@@ -294,6 +317,7 @@ globalChartData.push(
                         {
                             "state": "LA",
                             "name": "Louisiana",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 6,
                             "y": 4,
@@ -302,6 +326,7 @@ globalChartData.push(
                         {
                             "state": "IL",
                             "name": "Illinois",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 3,
                             "y": 5,
@@ -310,6 +335,7 @@ globalChartData.push(
                         {
                             "state": "KY",
                             "name": "Kentucky",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 4,
                             "y": 5,
@@ -318,6 +344,7 @@ globalChartData.push(
                         {
                             "state": "AR",
                             "name": "Arkansas",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 5,
                             "y": 5,
@@ -326,6 +353,7 @@ globalChartData.push(
                         {
                             "state": "MS",
                             "name": "Mississippi",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 6,
                             "y": 5,
@@ -334,6 +362,7 @@ globalChartData.push(
                         {
                             "state": "MI",
                             "name": "Michigan",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 2,
                             "y": 6,
@@ -342,6 +371,7 @@ globalChartData.push(
                         {
                             "state": "IN",
                             "name": "Indiana",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 3,
                             "y": 6,
@@ -350,6 +380,7 @@ globalChartData.push(
                         {
                             "state": "WV",
                             "name": "West Virginia",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 4,
                             "y": 6,
@@ -358,6 +389,7 @@ globalChartData.push(
                         {
                             "state": "TN",
                             "name": "Tennessee",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 5,
                             "y": 6,
@@ -366,6 +398,7 @@ globalChartData.push(
                         {
                             "state": "AL",
                             "name": "Alabama",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 6,
                             "y": 6,
@@ -374,6 +407,7 @@ globalChartData.push(
                         {
                             "state": "OH",
                             "name": "Ohio",
+                            "colorIndex": 55,
                             "region": "Midwest",
                             "x": 3,
                             "y": 7,
@@ -382,6 +416,7 @@ globalChartData.push(
                         {
                             "state": "MD",
                             "name": "Maryland",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 4,
                             "y": 7,
@@ -390,6 +425,7 @@ globalChartData.push(
                         {
                             "state": "VA",
                             "name": "Virginia",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 5,
                             "y": 7,
@@ -398,6 +434,7 @@ globalChartData.push(
                         {
                             "state": "SC",
                             "name": "South Carolina",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 6,
                             "y": 7,
@@ -406,6 +443,7 @@ globalChartData.push(
                         {
                             "state": "GA",
                             "name": "Georgia",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 7,
                             "y": 7,
@@ -415,6 +453,7 @@ globalChartData.push(
                             "state": "FL",
                             "name": "Florida",
                             "id": "FL",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 8,
                             "y": 7,
@@ -423,6 +462,7 @@ globalChartData.push(
                         {
                             "state": "NY",
                             "name": "New York",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 2,
                             "y": 8,
@@ -431,6 +471,7 @@ globalChartData.push(
                         {
                             "state": "PA",
                             "name": "Pennsylvania",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 3,
                             "y": 8,
@@ -439,6 +480,7 @@ globalChartData.push(
                         {
                             "state": "DE",
                             "name": "Delaware",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 4,
                             "y": 8,
@@ -447,6 +489,7 @@ globalChartData.push(
                         {
                             "state": "NC",
                             "name": "North Carolina",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 5,
                             "y": 8,
@@ -455,6 +498,7 @@ globalChartData.push(
                         {
                             "state": "VT",
                             "name": "Vermont",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 1,
                             "y": 9,
@@ -463,6 +507,7 @@ globalChartData.push(
                         {
                             "state": "MA",
                             "name": "Massachusetts",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 2,
                             "y": 9,
@@ -471,6 +516,7 @@ globalChartData.push(
                         {
                             "state": "NJ",
                             "name": "New Jersey",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 3,
                             "y": 9,
@@ -479,6 +525,7 @@ globalChartData.push(
                         {
                             "state": "ME",
                             "name": "Maine",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 0,
                             "y": 10,
@@ -487,6 +534,7 @@ globalChartData.push(
                         {
                             "state": "NH",
                             "name": "New Hampshire",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 1,
                             "y": 10,
@@ -495,6 +543,7 @@ globalChartData.push(
                         {
                             "state": "RI",
                             "name": "Rhode Island",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 2,
                             "y": 10,
@@ -503,6 +552,7 @@ globalChartData.push(
                         {
                             "state": "CT",
                             "name": "Connecticut",
+                            "colorIndex": 55,
                             "region": "Northeast",
                             "x": 3,
                             "y": 10,
@@ -511,6 +561,7 @@ globalChartData.push(
                         {
                             "state": "DC",
                             "name": "District of Columbia",
+                            "colorIndex": 55,
                             "region": "South",
                             "x": 5,
                             "y": 10,
@@ -528,6 +579,19 @@ globalChartData.push(
                 "series": {
                     "dataLabels": {
                         "enabled": false
+                    },
+                    point: {
+                        events: {
+                            mouseOver: function () { 
+                                // let current = this.graphic.attr("fill")
+                                // this.graphic.opacity = 0.5
+                                this.graphic.attr({
+                            opacity: 0.7,
+                        //    stroke: "red"
+                        });
+                        // console.log(this.graphic.attr("fill"))
+                            }
+                        } 
                     }
                 },
                 "pie": {

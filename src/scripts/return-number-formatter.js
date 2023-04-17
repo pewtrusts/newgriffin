@@ -35,13 +35,13 @@ export default function _returnFormatter(format, context, decimals){
             };
         case 'currency':
             return function _currency() {
-                var value = this.value !== undefined ? this.value : this.y;
+                var value = this.value !== undefined ? this.value : this.y !== undefined ? this.y : this;
                 return '$' + Highcharts.numberFormat(value, decimals || 0);
             };
         default:
             return function _default() {
                 var maxDecimals = returnMaxDecimals.call(this);
-                var value = this.value !== undefined ? this.value : this.y;
+                var value = this.value !== undefined ? this.value : this.y !== undefined ? this.y : this;
                 return Highcharts.numberFormat(value, decimals !== undefined ? decimals : maxDecimals);
             };
     }

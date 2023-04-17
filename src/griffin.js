@@ -95,7 +95,7 @@ export function beforeRenderExtensions(options, config){
             });
         return this.series.chart.userOptions.dataLabelNumberFormatter.call(this);
     });
-    
+
     Highcharts.setOptions(options);
 }
 Highcharts.SVGElement.prototype.addClass = function (className, replace) {
@@ -242,8 +242,7 @@ export function initSingleGriffin(griffin, i, _parent){
         extendObj(config.highchartsConfig, ['xAxis', 'tickmarkPlacement'], 'on');
     }
     if (config.highchartsConfig.chart.type == 'tilemap') {
-        config.highchartsConfig.yAxis = {}
-        config.highchartsConfig.yAxis.visible = false;
+        config.highchartsConfig.yAxis = {visible: false}
         config.highchartsConfig.xAxis.visible = false;
         config.highchartsConfig.chart.inverted = true;
         config.highchartsConfig.chart.styledMode = false;
@@ -254,10 +253,16 @@ export function initSingleGriffin(griffin, i, _parent){
             decimals: config.griffinConfig.LabelDecimals
         })
         );
+        config.highchartsConfig.plotOptions.series.states = {inactive: {enabled: true}}
         config.highchartsConfig.tooltip.padding = 1;
+        extendObj(config.highchartsConfig, ['plotOptions', 'series', 'point', 'events', 'mouseOver'], function() {
+            this.graphic.attr({opacity: 0.7});
+        })
     } else {
         config.highchartsConfig.yAxis.forEach(function (axis) {
             axis.title.text = axis.title.text || null;
+            axis.max = +axis.max || null;
+            axis.min = +axis.min || null;
         });
     }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
@@ -284,8 +289,8 @@ export function initSingleGriffin(griffin, i, _parent){
         setObserver(anchor, container, config.highchartsConfig, pictureContainer);
     } else {
         pictureContainer.style.display = 'none';
-        chart = Highcharts.chart(container, config.highchartsConfig);
-        window.Charts.push(chart);
+            chart = Highcharts.chart(container, config.highchartsConfig);
+            window.Charts.push(chart);
         return chart;
     }
 }

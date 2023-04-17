@@ -6,6 +6,8 @@ export default function _returnDataLabelFormatter(obj) {
     var numberFormatter = returnNumberFormatter(numberFormat, 'datalabel', decimals);
 
     return function() {
-        return `<div class="datalabel">${this.point.id}<br> <span class="mobile-hide">${numberFormatter.call(this.point.value)}</span></div>`
+        if (this.point.value) {
+            return `<div class="datalabel">${this.point.id}<br> <span class="mobile-hide">${numberFormatter.call(this.point.value)}</span></div>`
+        }
     }
 }
