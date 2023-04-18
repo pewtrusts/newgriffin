@@ -261,8 +261,8 @@ export function initSingleGriffin(griffin, i, _parent){
     } else {
         config.highchartsConfig.yAxis.forEach(function (axis) {
             axis.title.text = axis.title.text || null;
-            axis.max = +axis.max || null;
-            axis.min = +axis.min || null;
+            axis.max = isNaN(+axis.max) ? null : +axis.max
+            axis.min = isNaN(+axis.min) ? null : +axis.min
         });
     }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);

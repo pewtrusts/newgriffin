@@ -279,8 +279,10 @@ img.fullscreen {
   background-color: #f7f7f7;
 }
 
-.tilemap .highcharts-legend-series-active g.highcharts-series:not(.highcharts-series-hover), .tilemap .highcharts-legend-point-active .highcharts-point:not(.highcharts-point-hover), .tilemap .highcharts-legend-series-active .highcharts-markers:not(.highcharts-series-hover), .tilemap .highcharts-legend-series-active .highcharts-data-labels:not(.highcharts-series-hover) {
-  opacity: inherit;
+.tilemap {
+  .highcharts-legend-series-active g.highcharts-series:not(.highcharts-series-hover), .highcharts-legend-point-active .highcharts-point:not(.highcharts-point-hover), .highcharts-legend-series-active .highcharts-markers:not(.highcharts-series-hover), .highcharts-legend-series-active .highcharts-data-labels:not(.highcharts-series-hover) {
+    opacity: inherit;
+  }
 }
 
 .highcharts-heatmap-series .highcharts-point, .highcharts-tilemap-series .highcharts-point {
@@ -291,15 +293,11 @@ img.fullscreen {
   text-shadow: none;
 }
 
-// g.highcharts-data-labels.highcharts-tilemap-series {
-//     stroke-width: 0;
-// }
 
 .highcharts-container.griffin .map-label .highcharts-annotation-label-box {
   fill: white;
   stroke: white;
 }
-
 
 /* this likely doesn't need to be more specific since it only applies to styledMode: false charts */
 // g.highcharts-label.highcharts-tooltip.highcharts-color-0 {
@@ -308,7 +306,9 @@ img.fullscreen {
 
 
 @media screen and (max-width: 500px) {
-
+  .highcharts-heatmap-series .highcharts-point, .highcharts-tilemap-series .highcharts-point {
+    stroke-width: 0;
+  }
     .mobile-hide {
     display: none;
   }
