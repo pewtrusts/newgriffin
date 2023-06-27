@@ -103,6 +103,9 @@ export async function renderAndInit(searchParamsOrData){
             console.log(project);
             widthString = searchParamsOrData.get('width');
             widthString ? slot.style.width = widthString+"px" : "";
+            if (widthString && widthString < 501) {
+                slot.classList.add('mobile-preview')
+            }
             chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length || !!project, publishedFlags: p, isForThumbnail: t, project});
             break;
         default:
