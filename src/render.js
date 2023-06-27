@@ -90,7 +90,7 @@ export function adjustIframeHeight(){
     }
 }
 export async function renderAndInit(searchParamsOrData){
-    var chartData, idString, ids, pString, p, tString, t, project;
+    var chartData, idString, ids, pString, p, tString, t, project, widthString;
     switch (searchParamsOrData instanceof URLSearchParams) {
         case true: // ids passed in from URL param string. ie. from chartViewer preview
             idString = searchParamsOrData.get('ids');
@@ -101,6 +101,8 @@ export async function renderAndInit(searchParamsOrData){
             t = tString == 'true';
             project = searchParamsOrData.get('project');
             console.log(project);
+            widthString = searchParamsOrData.get('width');
+            widthString ? slot.style.width = widthString+"px" : "";
             chartData = await renderGriffins({chartIDs: ids, isFromParam: !!ids.length || !!project, publishedFlags: p, isForThumbnail: t, project});
             break;
         default:
