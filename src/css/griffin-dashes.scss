@@ -1,14 +1,36 @@
-.highcharts-container.griffin :not(.highcharts-legend-item) {
-    &.dashed {
+.highcharts-container.griffin {
+    .dashed {
         stroke-dasharray: 6;
     }
-    &.dotted {
+    .dotted {
         stroke-dasharray: 0.5 8;
     }
-    &.nostroke {
+    .nostroke {
         stroke: none;
     }
-    &.thin .highcharts-graph {
+    .thin .highcharts-graph {
         stroke-width: calc(var(--stroke-width) / 4);
+    }
+
+    .highcharts-legend-item.dashed {
+     .highcharts-graph {
+        stroke-dasharray: 6;
+        stroke-width: var(--stroke-width);
+    }
+    &.thin .highcharts-graph {
+        stroke-dasharray: 3;
+        stroke-width: 2;
+    }
+    }
+
+    .highcharts-legend-item.dotted .highcharts-graph {
+        stroke-width: var(--stroke-width);
+        stroke-linecap: round;
+    }
+    
+    & .dashed, & .dotted {
+        .highcharts-point {
+         display: none;
+    }
     }
 }
