@@ -14,12 +14,11 @@
 
     .highcharts-legend-item.dashed {
      .highcharts-graph {
-        stroke-dasharray: 6;
         stroke-width: var(--stroke-width);
+        stroke-linecap: round;
     }
     &.thin .highcharts-graph {
-        stroke-dasharray: 3;
-        stroke-width: 2;
+        stroke-width: calc(var(--stroke-width) / 4);
     }
     }
 
