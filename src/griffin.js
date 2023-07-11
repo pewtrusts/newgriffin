@@ -249,7 +249,8 @@ export function initSingleGriffin(griffin, i, _parent){
         config.highchartsConfig.chart.styledMode = false;
         // we only need to extendObj if the property doesn't exist
         extendObj(config.highchartsConfig, ['tooltip', 'useHTML'], true);
-        extendObj(config.highchartsConfig, ['plotOptions', 'series', 'dataLabels', 'formatter'], returnDataLabelFormatter({
+        // tilemaps have extra information per point and so they need a separate formatter
+        extendObj(config.highchartsConfig, ['plotOptions', 'tilemap', 'dataLabels', 'formatter'], returnDataLabelFormatter({
             numberFormat: config.griffinConfig.NumberFormat,
             decimals: config.griffinConfig.LabelDecimals
         })
@@ -272,6 +273,8 @@ export function initSingleGriffin(griffin, i, _parent){
         });
     }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
+
+    extendObj(config.highchartsConfig, ['plotOptions', 'series', 'dataLabels', 'formatter'], config.highchartsConfig.dataLabelNumberFormatter)
 
     if (config.griffinConfig.SelectedColorPalette == 'custom') {
         addCustomColorProperties({
