@@ -9,6 +9,13 @@ const secrets = require('./secrets.json');
 const mode = process.env.NODE_ENV === 'development' ? 'development' : 'production';
 const isDev = mode === 'development';
 
+let commitHash = require('child_process')
+  .execSync('git rev-parse --short HEAD')
+  .toString()
+  .trim();
+
+  console.log(commitHash)
+
 console.log('mode: ', mode)
 console.log('isDev: ', isDev)
 
@@ -40,6 +47,12 @@ if (!isDev) {
     
                 return `webpack:///${info.resourcePath}?${info.hash}`;
             },
+        }),
+       new HtmlWebpackPlugin({
+            template: './src/version.txt',
+            filename: 'version.txt',
+            commitHash,
+            inject: false
         })
     )
 
