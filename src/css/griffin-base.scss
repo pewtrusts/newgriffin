@@ -74,13 +74,14 @@ img.fullscreen {
   
   .highcharts-axis-labels {
     font-size: 1em;
+    fill: #000;
   }
   .highcharts-data-label-connector {
     fill: none;
   }
   .highcharts-plot-band-label, .highcharts-plot-line-label {
-      fill: #666;
-      color: #666;
+      fill: #333;
+      color: #333;
   }
   .highcharts-tracker-line {
         display: none;
@@ -103,12 +104,12 @@ img.fullscreen {
         transform: translate(0,-2px);
     }
         .highcharts-legend-item text {
-        fill: #666;
+        fill: #000;
         font-weight: normal;
     }
     .highcharts-annotation-label  {
         &:not(.highcharts-color){
-          fill: #666;
+          fill: #333;
         }
         text {
           fill: inherit;
