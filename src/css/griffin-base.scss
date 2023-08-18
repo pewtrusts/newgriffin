@@ -74,10 +74,10 @@ img.fullscreen {
   
   .highcharts-axis-labels {
     font-size: 1em;
-    fill: #000;
+    fill: #333;
   }
   .highcharts-axis-title{
-    fill: #000;
+    fill: #333;
   }
   .highcharts-data-label-connector {
     fill: none;
@@ -107,7 +107,6 @@ img.fullscreen {
         transform: translate(0,-2px);
     }
         .highcharts-legend-item text {
-        fill: #000;
         font-weight: normal;
     }
     .highcharts-annotation-label  {
