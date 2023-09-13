@@ -21,8 +21,8 @@ export function addCustomPatterns(obj){
     const { patterns, hash } = obj;
     removeStylesheet('customPatternStylesheet-' + hash);
     const decs = patterns.reduce((acc,pattern,i) => {
-        if (pattern){
-            return acc + `.cp-${hash} path.highcharts-color-${i}, .cp-${hash} .highcharts-legend-item.highcharts-color-${i} {
+        if (pattern && pattern.length){
+            return acc + `.cp-${hash} path.highcharts-color-${i}, .cp-${hash} rect.highcharts-color-${i}, .cp-${hash} .highcharts-legend-item.highcharts-color-${i} {
                 fill: url(#pattern-${hash}-${i});
             }`;
         }
