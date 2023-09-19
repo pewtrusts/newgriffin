@@ -197,7 +197,7 @@ export function initSingleGriffin(griffin, i, _parent){
     if (isLazy){
         parent.classList.add('lazy-load--ready');
     }
-    if (!parent.hasDownload) {
+    if (!parent.hasDownload && sourceNote) {
         imageLink = document.createElement('a');
         imageLink.textContent = 'View image';
         imageLink.className = 'griffin-download-btn';
@@ -304,7 +304,7 @@ export function initSingleGriffin(griffin, i, _parent){
     }
 }
 export function init(v, /*isFromParams*/){
-    chartDataArray = v;
+    chartDataArray = v ? v.flat() : v;
     window.Charts = [];
    // const griffins = !isFromParams ? document.querySelectorAll('.js-griffin') : [document.querySelector('#chart-slot')];
     const griffins = document.querySelectorAll('.js-griffin');

@@ -56,7 +56,13 @@ function renderFromImages(chartData){
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
         // const mobileImg = document.getElementById('mobile-' + img.dataset.id)
+        if (Array.isArray(chartData[i])) {
+            chartData[i].forEach((d) => {
+                slot.insertAdjacentHTML('beforeend', d.template);
+            })
+        } else {
         slot.insertAdjacentHTML('beforeend', chartData[i].template);
+        }
         img.insertAdjacentElement('beforebegin', slot);
         const mobileImg = img.nextElementSibling
         const picContainer = slot.querySelector('.js-picture-container');
