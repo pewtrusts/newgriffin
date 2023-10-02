@@ -68,6 +68,7 @@
         }
     },
     "legend": {
+        "symbolWidth": 18,
         "margin": 27,
         "itemMarginBottom": 10,
         "symbolRadius": 0

@@ -101,13 +101,17 @@ img.fullscreen {
         transform: translate(0,1px);
         stroke: none;
     }
-    .highcharts-legend-item.highcharts-line-series .highcharts-graph {
-        stroke-width: 16px;
-        stroke-linecap: butt;
-        transform: translate(0,-2px);
-    }
+    // .highcharts-legend-item.highcharts-line-series .highcharts-graph {
+    //     stroke-width: 16px;
+    //     stroke-linecap: butt;
+    //     transform: translate(0,-2px);
+    // }
+    .highcharts-legend-item.highcharts-line-series path.highcharts-point {
+      display: none;
+  }
         .highcharts-legend-item text {
         font-weight: normal;
+        // font-size: 1em;
     }
     .highcharts-annotation-label  {
         &:not(.highcharts-color){
@@ -115,6 +119,7 @@ img.fullscreen {
         }
         text {
           fill: inherit;
+          // font-size: 1em;
         }
     }
     .highcharts-annotation-label-box {
@@ -134,6 +139,7 @@ img.fullscreen {
         filter: none;
         text {
             transform: translateY(-2px);
+            // font-size: 1em;
         }
         .highcharts-header {
             font-size: .75em;
@@ -254,6 +260,9 @@ img.fullscreen {
 .last-label-only .highcharts-data-label:not(.last-datalabel){
   visibility: hidden;
 } 
+// .last-label-only .highcharts-data-label:last-child {
+//   visibility: visible !important;
+// }
 .scatter .highcharts-container.griffin .highcharts-markers {
       display: inline;
   }

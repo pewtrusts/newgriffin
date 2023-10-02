@@ -274,7 +274,10 @@ export function initSingleGriffin(griffin, i, _parent){
     }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
 
+    // todo: report highcharts specificity bug
+    if (config.highchartsConfig.chart.type !== 'line') {
     extendObj(config.highchartsConfig, ['plotOptions', 'series', 'dataLabels', 'formatter'], config.highchartsConfig.dataLabelNumberFormatter)
+    }
 
     if (config.griffinConfig.SelectedColorPalette == 'custom') {
         addCustomColorProperties({
