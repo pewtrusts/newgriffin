@@ -260,9 +260,9 @@ img.fullscreen {
 .last-label-only .highcharts-data-label:not(.last-datalabel){
   visibility: hidden;
 } 
-// .last-label-only .highcharts-data-label:last-child {
-//   visibility: visible !important;
-// }
+.last-label-only .highcharts-data-label:last-child {
+  visibility: visible;
+}
 .scatter .highcharts-container.griffin .highcharts-markers {
       display: inline;
   }
