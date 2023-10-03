@@ -250,6 +250,11 @@ img.fullscreen {
 .highcharts-data-label text {
   text-shadow: 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff, -1px -1px 1px #fff;
 }
+@media print {
+  .highcharts-data-label text {
+  -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);;
+}
+}
 .highcharts-data-label text, text.highcharts-data-label {
   fill: inherit;
 }
