@@ -17,6 +17,14 @@ a:hover {
   position: relative;
   page-break-inside: avoid;
 }
+.griffin-figure {
+  header, figcaption, p {
+    color: #000;
+  }
+  .highcharts-legend-item text {
+    fill: #000;
+  }
+}
 .griffin-unpublished-link {
   position: absolute;
   top: 0;
@@ -74,18 +82,19 @@ img.fullscreen {
   
   .highcharts-axis-labels {
     font-size: 1em;
-    fill: #333;
+    fill: #000;
   }
   .highcharts-axis-title{
-    fill: #333;
+    fill: #000;
   }
   .highcharts-data-label-connector {
     fill: none;
   }
   .highcharts-plot-band-label, .highcharts-plot-line-label {
-      fill: #333;
-      color: #333;
+      fill: #000;
+      color: #000;
   }
+
   .highcharts-tracker-line {
         display: none;
 
@@ -115,7 +124,7 @@ img.fullscreen {
     }
     .highcharts-annotation-label  {
         &:not(.highcharts-color){
-          fill: #333;
+          fill: #000;
         }
         text {
           fill: inherit;
@@ -250,14 +259,20 @@ img.fullscreen {
 .highcharts-data-label text {
   text-shadow: 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff, -1px -1px 1px #fff;
 }
+
 @media print {
   .highcharts-data-label text {
-  -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);;
-}
+    -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);;
+  }
 }
 .highcharts-data-label text, text.highcharts-data-label {
   fill: inherit;
+  font-size: .85em;
 }
+  .data-label-inside .highcharts-data-label text {
+    text-shadow: none;
+    fill: #ffffff;
+  }
 .highcharts-grid-line, .highcharts-axis-line {
   stroke: #a7a7a7;
   

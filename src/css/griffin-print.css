@@ -5,7 +5,7 @@
 }
 .highcharts-container.griffin.griffin--for-print .highcharts-axis-labels  {
 	font-size: inherit;
-	fill:#333;
+	fill:#000;
 }
 .highcharts-container.griffin.griffin--for-print .highcharts-axis-title {
 	font-size: inherit;
@@ -14,5 +14,5 @@
 .highcharts-container.griffin.griffin--for-print .highcharts-legend text {
     font-weight: normal;
     font-size: inherit;
-	fill: #333;
+	fill: #000;
 }
