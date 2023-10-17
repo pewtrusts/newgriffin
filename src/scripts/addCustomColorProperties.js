@@ -34,3 +34,6 @@ export function addCustomPatterns(obj){
     customPatternStylesheet.innerText = decs;
 
 }
+export function removeCustomPatterns(hash) {
+    removeStylesheet('customPatternStylesheet-' + hash);
+}

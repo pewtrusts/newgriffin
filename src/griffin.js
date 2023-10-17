@@ -1,7 +1,7 @@
 import Highcharts from 'Highcharts'; // defined as an external in webpack config
 import HCRegression from '../submodules/highcharts-regression'; // local fork
 import options from './options.json';
-import addCustomColorProperties from './scripts/addCustomColorProperties';
+import addCustomColorProperties, { removeCustomPatterns } from './scripts/addCustomColorProperties';
 import {addCustomPatterns} from './scripts/addCustomColorProperties';
 import returnFormatter from './scripts/return-number-formatter';
 import returnPointFormatter from './scripts/return-point-formatter';
@@ -286,7 +286,11 @@ export function initSingleGriffin(griffin, i, _parent){
         });
     }
     if (config.griffinConfig.PatternColors && config.griffinConfig.PatternColors.some(d => d)){
+        if (config.griffinConfig.SelectedColorPalette == 'custom') {
         addCustomPatterns({ patterns: config.griffinConfig.PatternColors, hash: hash(config.griffinConfig.PatternColors.flat().join('')) });
+        } else {
+            removeCustomPatterns(hash(config.griffinConfig.PatternColors.flat().join('')))
+        }
     }
     /**
      * workaround for FF bug that seems sometimes include the first letter of a subsequent <tspan>
