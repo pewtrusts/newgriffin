@@ -261,9 +261,15 @@ img.fullscreen {
 }
 
 @media print {
-  .highcharts-data-label text {
+  .highcharts-container:not(.data-label-inside) .highcharts-data-label text {
     -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);;
   }
+  figcaption a {
+    color: inherit;
+}
+  .griffin-figure .griffin-download-btn {
+  display: none;
+}
 }
 .highcharts-data-label text, text.highcharts-data-label {
   fill: inherit;
