@@ -250,6 +250,11 @@ img.fullscreen {
   font-size: 1rem;
 }
 
+// resets for highcharts 11
+.highcharts-axis-title, .highcharts-legend-item > text, .highcharts-tooltip text, div.highcharts-tooltip {
+  font-size: 1em;
+}
+
 .highcharts-data-label.datapoint--upward text {
   text-anchor: middle;
 }

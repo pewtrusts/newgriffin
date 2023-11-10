@@ -34,6 +34,25 @@ export function beforeRenderExtensions(options, config){
     if (customOptions && typeof customOptions == 'object' && Object.keys(customOptions).length > 0) {
         config.highchartsConfig = _.defaultsDeep(customOptions, config.highchartsConfig);
     }
+    var customCSS = config.griffinConfig.CustomCSS;
+    var hashId = config.griffinConfig.hashId
+    if (customCSS) {
+        let style;
+        if (document.getElementById("css-" + hashId)) {
+            document.getElementById("css-" + hashId).innerHTML = customCSS;
+            style = document.getElementById("css-" + hashId);
+        } else {
+            style = document.createElement('style');
+            style.id = "css-" + hashId
+            style.innerHTML = customCSS;
+            document.head.appendChild(style)
+        }
+        for (let x=0;x<style.sheet.cssRules.length;x++){
+            let rule = style.sheet.cssRules[x];
+            rule.selectorText = "figure#chart-" + hashId + " " + rule.selectorText;
+        }
+
+    }
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
         return this.point.name + '<br>' + returnFormatter('percentage','tooltip',config.griffinConfig.LabelDecimals).call({ value: this.percentage / 100 });
     })
@@ -218,8 +237,10 @@ export function initSingleGriffin(griffin, i, _parent){
         parent.hasDownload = true;
 
     }
+    config.griffinConfig.hashId = hash(config.griffinConfig.ChartLabel + config.griffinConfig.ChartTitle + config.griffinConfig.ChartSubtitle + config.griffinConfig.ChartDescription + config.griffinConfig.ChartNotes);
     beforeRenderExtensions(options, config);
     extendObj(config.highchartsConfig, ['yAxis[0]', 'labels', 'formatter'], returnFormatter(config.griffinConfig.NumberFormat, null, config.griffinConfig.YAxisDecimals));
+    if (!config.griffinConfig.CustomSettings.tooltip || Object.keys(config.griffinConfig.CustomSettings.tooltip).length == 0) {
         extendObj(config.highchartsConfig,
             ['tooltip', 'pointFormatter'],
             returnPointFormatter({
@@ -229,6 +250,7 @@ export function initSingleGriffin(griffin, i, _parent){
                 chartType: config.highchartsConfig.chart.type
             })
         );
+    } 
     extendObj(config.highchartsConfig, ['legend', 'labelFormatter'], returnLegendFormatter(config.highchartsConfig.chart.type));
     /**
     * short term fix for scatter plots. should allow for sifferent defaults based on chart types
@@ -250,11 +272,13 @@ export function initSingleGriffin(griffin, i, _parent){
         // we only need to extendObj if the property doesn't exist
         extendObj(config.highchartsConfig, ['tooltip', 'useHTML'], true);
         // tilemaps have extra information per point and so they need a separate formatter
+        if (!config.griffinConfig.CustomSettings.plotOptions?.series?.dataLabels?.format) {
         extendObj(config.highchartsConfig, ['plotOptions', 'tilemap', 'dataLabels', 'formatter'], returnDataLabelFormatter({
             numberFormat: config.griffinConfig.NumberFormat,
             decimals: config.griffinConfig.LabelDecimals
         })
         );
+    }
         if (config.griffinConfig.CustomSettings.colorAxis && !config.griffinConfig.CustomSettings.colorAxis.dataClasses) {
             extendObj(config.griffinConfig.CustomSettings.colorAxis, ['labels', 'formatter'], returnNumberFormatter(config.griffinConfig.NumberFormat, 'legend',
                 config.griffinConfig.LabelDecimals
