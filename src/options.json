@@ -54,6 +54,7 @@
               }
         },
         "series": {
+            "borderRadius": 0,
             "states": {
                 "inactive": {
                     "enabled": false

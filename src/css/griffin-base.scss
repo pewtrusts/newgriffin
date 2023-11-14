@@ -255,6 +255,10 @@ img.fullscreen {
   font-size: 1em;
 }
 
+.highcharts-column-series path.highcharts-point, .highcharts-bar-series path.highcharts-point  {
+  stroke: unset;
+}
+
 .highcharts-data-label.datapoint--upward text {
   text-anchor: middle;
 }
