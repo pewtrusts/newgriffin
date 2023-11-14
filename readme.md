@@ -5,7 +5,7 @@ This branch is the Griffin code that converts a chart template produced by the n
 
 The Chart Builder uses this repo as a submodule. When the new version of Griffin charts goes live, they will need this repo's built files to be packaged and uploaded to Sitecore.
 
-Files are built with `npx webpack`, which exports to the /dist directory. Webpack returns the hash in a console log and generates a version.txt file. I've been zipping every version with that hash as an identifier, and putting into /etc like this: `zip ./etc/Griffin-v5_1_{hash} -r ./dist` so that I have a reference for what's live.
+Files are built with `npx webpack`, which exports to the /dist directory. Webpack returns the hash in a console log and generates a version.txt file. I've been zipping every version with that hash as an identifier, and putting into /etc like this: `zip ./etc/Griffin-v5_1_{hash} -r -j ./dist/*` so that I have a reference for what's live.
 
 Those built files are currently stored in the `~/media/data-visualizations/interactives/griffin-v5_1` directory of the media library.
 
