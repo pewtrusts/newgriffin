@@ -295,6 +295,7 @@ export function initSingleGriffin(griffin, i, _parent){
             axis.max = isNaN(+axis.max) ? null : +axis.max
             axis.min = isNaN(+axis.min) ? null : +axis.min
         });
+        config.highchartsConfig.legend.symbolWidth = 18;
     }
     config.highchartsConfig.dataLabelNumberFormatter = returnFormatter(config.griffinConfig.NumberFormat, 'tooltip', config.griffinConfig.LabelDecimals);
 
