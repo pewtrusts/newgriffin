@@ -28,7 +28,7 @@ a:hover {
 .griffin-unpublished-link {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -130px;
   padding: 0 0.3em 0.1em;
   background-color: #767676;
   color: #fff;
@@ -324,6 +324,7 @@ img.fullscreen {
 .html-tooltip {
   padding: 6px;
   background-color: #f7f7f7;
+  font-size: 1.25em;
 }
 
 .tilemap {
@@ -340,6 +341,9 @@ img.fullscreen {
   text-shadow: none;
 }
 
+// g.highcharts-series.highcharts-tilemap-series {
+//   filter: drop-shadow(-1px -1px 0px white) drop-shadow(1px 1px 3px white) drop-shadow(-1px -2px 0px #ccc);
+// }
 
 .highcharts-container.griffin .map-label .highcharts-annotation-label-box {
   fill: white;
