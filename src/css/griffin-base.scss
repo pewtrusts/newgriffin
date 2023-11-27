@@ -253,7 +253,8 @@ img.fullscreen {
 }
 
 // resets for highcharts 11
-.highcharts-axis-title, .highcharts-legend-item > text, .highcharts-tooltip text, div.highcharts-tooltip {
+.highcharts-axis-title, .highcharts-legend-item > text, .highcharts-tooltip text, 
+div.highcharts-tooltip, .highcharts-annotation-label text {
   font-size: 1em;
 }
 
