@@ -275,7 +275,8 @@ export function initSingleGriffin(griffin, i, _parent){
         if (!config.griffinConfig.CustomSettings.plotOptions?.series?.dataLabels?.format) {
         extendObj(config.highchartsConfig, ['plotOptions', 'tilemap', 'dataLabels', 'formatter'], returnDataLabelFormatter({
             numberFormat: config.griffinConfig.NumberFormat,
-            decimals: config.griffinConfig.LabelDecimals
+            decimals: config.griffinConfig.LabelDecimals,
+            showNumber: config.griffinConfig.LastLabelOnly == 'show-numbers'
         })
         );
     }
