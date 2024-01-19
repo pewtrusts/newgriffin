@@ -1,7 +1,7 @@
 .highcharts-container.griffin.griffin--for-print {
 	font-family: 'lato';
 	font-size: 17.778px; /* scales to 10pt in print */
-
+	font-size: 13.3px;
 }
 .highcharts-container.griffin.griffin--for-print .highcharts-axis-labels  {
 	font-size: inherit;
