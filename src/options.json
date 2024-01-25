@@ -3,7 +3,7 @@
         "styledMode": true,
         "className": "griffin",
         "spacingBottom": 0,
-        "spacingRight": 20
+        "spacingRight": 0
     },
     "credits": {
         "enabled": false
@@ -70,7 +70,7 @@
         }
     },
     "legend": {
-        "margin": 27,
+        "margin": 10,
         "itemMarginBottom": 10,
         "symbolRadius": 0
     },

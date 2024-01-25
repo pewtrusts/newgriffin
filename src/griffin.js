@@ -239,7 +239,9 @@ export function initSingleGriffin(griffin, i, _parent){
     }
     config.griffinConfig.hashId = hash(config.griffinConfig.ChartLabel + config.griffinConfig.ChartTitle + config.griffinConfig.ChartSubtitle + config.griffinConfig.ChartDescription + config.griffinConfig.ChartNotes);
     beforeRenderExtensions(options, config);
-    extendObj(config.highchartsConfig, ['yAxis[0]', 'labels', 'formatter'], returnFormatter(config.griffinConfig.NumberFormat, null, config.griffinConfig.YAxisDecimals));
+    if (!config.highchartsConfig?.yAxis[0]?.labels?.format) {
+        extendObj(config.highchartsConfig, ['yAxis[0]', 'labels', 'formatter'], returnFormatter(config.griffinConfig.NumberFormat, null, config.griffinConfig.YAxisDecimals));
+    }
     if (!config.griffinConfig.CustomSettings.tooltip || Object.keys(config.griffinConfig.CustomSettings.tooltip).length == 0) {
         extendObj(config.highchartsConfig,
             ['tooltip', 'pointFormatter'],
