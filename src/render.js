@@ -57,8 +57,23 @@ function renderFromImages(chartData){
         const slot = document.createElement('div');
         // const mobileImg = document.getElementById('mobile-' + img.dataset.id)
         if (Array.isArray(chartData[i])) {
-            chartData[i].forEach((d) => {
-                slot.insertAdjacentHTML('beforeend', d.template);
+            chartData[i].forEach((d, index) => {
+                if (index == 0) {
+                    slot.insertAdjacentHTML('beforeend', d.template);
+                    if (slot.querySelector('.figure-dek')) {
+                        slot.querySelector('.js-griffin-container').prepend(slot.querySelector('.figure-dek'))
+                    }
+                } else {
+                    let fullChart = document.createRange().createContextualFragment(d.template)
+                    let chartHeader = fullChart.querySelector('header')
+                    let chartCaption = fullChart.querySelector('figcaption')
+                    let chartPiece = fullChart.querySelector('.js-griffin-container')
+                    slot.querySelector('.griffin-outer-container').appendChild(chartPiece)
+                    chartPiece.prepend(chartHeader);
+                    if (chartCaption) {
+                        slot.querySelector('figure').appendChild(chartCaption);
+                    }
+                }
             })
         } else {
         slot.insertAdjacentHTML('beforeend', chartData[i].template);

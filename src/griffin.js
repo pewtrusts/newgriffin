@@ -344,14 +344,15 @@ export function init(v, /*isFromParams*/){
    // const griffins = !isFromParams ? document.querySelectorAll('.js-griffin') : [document.querySelector('#chart-slot')];
     const griffins = document.querySelectorAll('.js-griffin');
     if (window.CSS && CSS.supports('color', 'var(--primary)')) {
+        let count = 0;
         for (var i = 0; i < griffins.length; i++){
             
             const singletons = griffins[i].querySelectorAll('.js-griffin-container');
             if (singletons.length > 1){
-                // TO DO: FIGURE OUT MULTIPLES
-                /*for (var j = 0; j < singletons.length; j++){
-                    initSingleGriffin(singletons[j],i, griffins[i]);
-                }*/
+                for (var j = 0; j < singletons.length; j++){
+                    initSingleGriffin(singletons[j],count, griffins[i]);
+                    count += 1
+                }
             } else {
                 /**
                  * when Griffin is called from the chart builder tool, we need to return the instance
@@ -360,9 +361,11 @@ export function init(v, /*isFromParams*/){
                  * differentiate
                  */
                 if (griffins.length == 1){
-                    return initSingleGriffin(griffins[i],i);
+                    count += 1
+                    return initSingleGriffin(griffins[i],count - 1);
                 } else {
-                    initSingleGriffin(griffins[i], i);
+                    initSingleGriffin(griffins[i], count);
+                    count += 1
                 }
             }
         }
