@@ -27,6 +27,7 @@ const plugins = [
     new webpack.DefinePlugin({
         'API_ENDPOINT_GET_CHART': '"' + secrets.API_ENDPOINT_GET_CHART + '"',
         'API_HOST': '"' + secrets.API_HOST + '"',
+        'COMMIT': '"' + commitHash + '"'
     }),
 ]
 
@@ -64,7 +65,7 @@ if (isDev) {
 
     plugins.push(new HtmlWebpackPlugin({
         title: 'title title title',
-        template: './src/localtesting/index.html',
+        template: './src/localtesting/composite.html',
         inject: false
     }))
 }

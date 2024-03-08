@@ -1,3 +1,5 @@
+/* global COMMIT */
+
 (function(){
     var hcStyles, griffinStyles, hc, griffin;
     if (!window.griffinV5IsLoaded){
@@ -7,7 +9,7 @@
         hcStyles.setAttribute('href','https://code.highcharts.com/11.2/css/highcharts.css');
         griffinStyles = document.createElement('link');
         griffinStyles.setAttribute('rel','stylesheet');
-        griffinStyles.setAttribute('href','/-/media/data-visualizations/interactives/griffin-v5_1/griffin-styles.css');
+        griffinStyles.setAttribute('href','/-/media/data-visualizations/interactives/griffin-v5_1/griffin-styles.css?v=' + COMMIT);
         hc = document.createElement('script');
         hc.async = false;
         // hc.setAttribute('src','https://code.highcharts.com/11.2/highcharts.js');
@@ -22,7 +24,7 @@
         hcAnnotations.async = false;
         hcAnnotations.setAttribute('src','https://code.highcharts.com/11.2/modules/annotations.js');
         griffin = document.createElement('script');
-        griffin.setAttribute('src','/-/media/data-visualizations/interactives/griffin-v5_1/griffin.js');
+        griffin.setAttribute('src','/-/media/data-visualizations/interactives/griffin-v5_1/griffin.js?v=' + COMMIT);
         griffin.async = false;
         document.head.appendChild(hcStyles);
         document.head.appendChild(griffinStyles);
