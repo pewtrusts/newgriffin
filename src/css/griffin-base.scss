@@ -255,6 +255,18 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
   font-size: 1em;
 }
 
+// div.highcharts-tooltip {
+//   font-size: 1.2em !important;
+// }
+
+.highcharts-root text, .highcharts-tooltip * {
+  font-family: 'Lato';
+}
+
+.highcharts-map-series .highcharts-null-point {
+  fill: #c7c7c7;
+}
+
 .highcharts-column-series path.highcharts-point, .highcharts-bar-series path.highcharts-point  {
   stroke: unset;
 }
@@ -320,11 +332,23 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
   margin: auto var(--column-margin-inline, 16px);
 }
 
+// map resets
+
+.highcharts-legend-box {
+  fill: rgba(255, 255, 255, 0.85)
+}
+
+g.highcharts-series.highcharts-map-series {
+  filter: 
+      drop-shadow(-1px -1px 0px white) 
+      drop-shadow(-1px -1px 3px white) 
+      drop-shadow(1px 3px 0px #ccc);
+}
 
 .html-tooltip {
   padding: 6px;
   background-color: #f7f7f7;
-  font-size: 1.25em;
+  font-size: 12.8px;
 }
 
 .tilemap {
