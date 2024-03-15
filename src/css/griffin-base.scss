@@ -222,6 +222,7 @@ img.fullscreen {
   }
   .griffin-outer-container--2-up {
     grid-template-columns: repeat( auto-fit, minmax(300px, 1fr) );
+    display: grid;
   }
   .griffin-outer-container--3-up {
     grid-template-columns: repeat( auto-fit, minmax(200px, 1fr) );
@@ -278,6 +279,11 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
 }
   .griffin-figure .griffin-download-btn {
   display: none;
+}
+  * {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+    print-color-adjust: exact !important; 
 }
 }
 .highcharts-data-label text, text.highcharts-data-label {
