@@ -101,6 +101,7 @@ function renderFromParam(chartData){
     chartData.forEach(d => {
         slot.insertAdjacentHTML('beforeend', d.template);
     });
+    window.postMessage({messageType: "confirmation", message: "chartsLoaded"})
 }
 export function adjustIframeHeight(){
     const isTop = window.self == top;
