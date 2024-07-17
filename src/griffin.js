@@ -71,7 +71,10 @@ export function beforeRenderExtensions(options, config){
             // this.chart.redraw();
             document.body.dispatchEvent(chartLoaded);
             console.log('resize iframe');
-            adjustIframeHeight();
+            // to account for chart.animation (not series.animation)
+            setTimeout(function(){
+                adjustIframeHeight();
+            },1000)
         }
     });
     extendObj(options, ['plotOptions','line','dataLabels','formatter'], function(){
@@ -143,6 +146,10 @@ Highcharts.SVGElement.prototype.addClass = function (className, replace) {
         }
         return this;
     };
+    // Highcharts.Templating.helpers.log = function () {
+    //     console.log(arguments[0].ctx);
+    // };
+
 window.Highcharts = Highcharts;
 export function extendObj(base, properties, value){
     properties.reduce(function(acc,cur,i){
