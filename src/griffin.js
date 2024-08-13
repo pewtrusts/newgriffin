@@ -261,6 +261,10 @@ export function initSingleGriffin(griffin, i, _parent){
         );
     } 
     extendObj(config.highchartsConfig, ['legend', 'labelFormatter'], returnLegendFormatter(config.highchartsConfig.chart.type));
+
+    if (config.highchartsConfig.plotOptions.series?.events?.legendItemClick == false) {
+        extendObj(config.highchartsConfig, ['plotOptions', 'series', 'events', 'legendItemClick'], function() {return false})
+    }
     /**
     * short term fix for scatter plots. should allow for sifferent defaults based on chart types
     * ***** ALSO ***** why are some modifications made to the options (defaults) and others on the config object? 
