@@ -146,9 +146,15 @@ Highcharts.SVGElement.prototype.addClass = function (className, replace) {
         }
         return this;
     };
-    // Highcharts.Templating.helpers.log = function () {
-    //     console.log(arguments[0].ctx);
-    // };
+    Highcharts.Templating.helpers.log = function () {
+        console.log(arguments[0].ctx);
+    };
+
+    Highcharts.dateFormats.Q = function (timestamp) {
+        const date = new Date(timestamp);
+        let month = date.getUTCMonth() + 3;
+        return "Q" + (month - (month % 3)) / 3;
+    };
 
 window.Highcharts = Highcharts;
 export function extendObj(base, properties, value){
