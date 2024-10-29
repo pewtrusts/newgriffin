@@ -282,13 +282,13 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
 .highcharts-data-label.datapoint--dip text {
   transform: translate(0px, 2.1em)
 }
-.highcharts-data-label text {
+.highcharts-data-label text, .highcharts-data-labels.dl-series .highcharts-data-label text {
   text-shadow: 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff, -1px -1px 1px #fff;
 }
 
 @media print {
-  .highcharts-container:not(.data-label-inside) .highcharts-data-label text {
-    -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);;
+  .highcharts-container:not(.bar.data-label-inside) .highcharts-data-label text {
+    -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);
   }
   figcaption a {
     color: inherit;

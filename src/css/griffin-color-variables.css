@@ -2,6 +2,25 @@
  * can be set as a config property passed to Highcharts and in chartBulder.*/
 :root {
     --color-0: #296ec3;
+    --color-1: #f47d4b; 
+    --color-2: #229cc5; 
+    --color-3: #5ac7be; 
+    --color-4: #d75555; 
+    --color-5: #f4c62e; 
+    --color-6: #e57cae; 
+    --color-7: #8062a1;
+    --color-8: #6d9953; 
+    --color-9: #333333;
+    --color-10: #727171; 
+    --color-11: #b0b0b0; 
+    --color-12: #e1e1e1; 
+    --color-13: #f0f0f0;
+    --color-14: #ebf4ff;
+}
+
+/* original defaults */
+.default {
+    --color-0: #296ec3;
     --color-1: #333333; /* use 6-digit notation for compat with setting values of input[type="color"] */
     --color-2: #229cc5; 
     --color-3: #5ac7be; 
@@ -21,36 +40,36 @@
     the list of available color palettes */
 
 .pew-blue {
-    --color-0: #153164;
-    --color-1: #1f4e92;
-    --color-2: #296ec2;
-    --color-3: #5890d3;
-    --color-4: #86b3e2;
-    --color-5: #b5d5f2;
+    --color-0: #1f1e4f;
+    --color-1: #1a3d84;
+    --color-2: #296EC3;
+    --color-3: #5d9ed5;
+    --color-4: #89c3ea;
+    --color-5: #bdddf5;
 }
 .gray {
-    --color-0: #0b0a0a;
-    --color-1: #313030;
-    --color-2: #585555;
-    --color-3: #7e7b7b;
-    --color-4: #a5a0a0;
-    --color-5: #cbc6c6;
+    --color-0: #000000;
+    --color-1: #333333;
+    --color-2: #686666;
+    --color-3: #8f8c8d;
+    --color-4: #b6b1b1;
+    --color-5: #d3d0d1;
 }
 .teal {
-    --color-0: #0A4242;
-    --color-1: #175C5C;
-    --color-2: #297676;
-    --color-3: #408F8F;
-    --color-4: #5DA8A8;
-    --color-5: #7EC2C2;
+    --color-0: #002323;
+    --color-1: #004b4a;
+    --color-2: #117471;
+    --color-3: #289d97;
+    --color-4: #5fc5bd;
+    --color-5: #b6e0da;
 }
 .orange {
-    --color-0: #6b2514;
-    --color-1: #a2482a;
-    --color-2: #d96b40;
-    --color-3: #f68f60;
-    --color-4: #fab38a;
-    --color-5: #fed7b4;
+    --color-0: #391614;
+    --color-1: #7c331c;
+    --color-2: #cd572b;
+    --color-3: #FF7F49;
+    --color-4: #f9ad7f;
+    --color-5: #fed8b4;
 }
 .blue {
     --color-0: #0f304a;
@@ -61,30 +80,48 @@
     --color-5: #bce6f7;
 }
 .red {
-    --color-0: #4f1615;
-    --color-1: #802d2c;
-    --color-2: #b54545;
-    --color-3: #de6b6a;
-    --color-4: #eda09a;
-    --color-5: #fcd1c7;
+    --color-0: #3c1614;
+    --color-1: #721115;
+    --color-2: #ab3231;
+    --color-3: #d85555;
+    --color-4: #f1988c;
+    --color-5: #fcd3c9;
 }
 
 .green {
-    --color-0: #1e2e17;
-    --color-1: #39512b;
-    --color-2: #557841;
-    --color-3: #77a05d;
-    --color-4: #a8c591;
-    --color-5: #daebc7;
+    --color-0: #142719;
+    --color-1: #2a4522;
+    --color-2: #496d38;
+    --color-3: #6d9953;
+    --color-4: #a5c38e;
+    --color-5: #d3e8c1;
 }
 
 .pink {
-    --color-0: #5f2339;
-    --color-1: #883e5d;
-    --color-2: #b35b82;
-    --color-3: #e079aa;
-    --color-4: #edabcc;
-    --color-5: #f6ddeb;
+    --color-0: #40001f;
+    --color-1: #732747;
+    --color-2: #b3507e;
+    --color-3: #E67CAE;
+    --color-4: #edabcd;
+    --color-5: #f5dbea;
+}
+
+.purple {
+    --color-0: #311b42;
+    --color-1: #53386d;
+    --color-2: #8062a1;
+    --color-3: #a38dc3;
+    --color-4: #bbb3d8;
+    --color-5: #d9d7ec;
+}
+
+.yellow {
+    --color-0: #3b2200;
+    --color-1: #69451c;
+    --color-2: #956b2f;
+    --color-3: #d19a26;
+    --color-4: #f4c62e;
+    --color-5: #ffe079;
 }
 
 @media (prefers-color-scheme: dark) {
