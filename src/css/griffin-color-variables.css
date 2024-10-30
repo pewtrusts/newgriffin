@@ -2,13 +2,13 @@
  * can be set as a config property passed to Highcharts and in chartBulder.*/
 :root {
     --color-0: #296ec3;
-    --color-1: #f47d4b; 
-    --color-2: #229cc5; 
-    --color-3: #5ac7be; 
-    --color-4: #d75555; 
+    --color-1: #ff7f49; 
+    --color-2: #5ac7be; 
+    --color-3: #d85555; 
+    --color-4: #229DC6; 
     --color-5: #f4c62e; 
-    --color-6: #e57cae; 
-    --color-7: #8062a1;
+    --color-6: #8062a1;
+    --color-7: #E67CAE; 
     --color-8: #6d9953; 
     --color-9: #333333;
     --color-10: #727171; 
@@ -60,7 +60,7 @@
     --color-1: #004b4a;
     --color-2: #117471;
     --color-3: #289d97;
-    --color-4: #5fc5bd;
+    --color-4: #5ac7be;
     --color-5: #b6e0da;
 }
 .orange {
@@ -78,6 +78,14 @@
     --color-3: #279ec7;
     --color-4: #73c3df;
     --color-5: #bce6f7;
+}
+.turquoise {
+    --color-0: #002139;
+    --color-1: #074263;
+    --color-2: #00729d;
+    --color-3: #229DC6;
+    --color-4: #7cceeb;
+    --color-5: #bde6f5;
 }
 .red {
     --color-0: #3c1614;
