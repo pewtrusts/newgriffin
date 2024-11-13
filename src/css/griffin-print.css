@@ -15,7 +15,3 @@
     font-size: inherit;
 	fill: #000;
 }
-
-.highcharts-container.griffin.griffin--for-print .highcharts-data-label text, .highcharts-container.griffin.griffin--for-print .highcharts-data-labels.dl-series .highcharts-data-label text {
-    text-shadow: 1px 1px 1px #fff, 1px -1px 1px #fff, -1px 1px 1px #fff, -1px -1px 1px #fff;
-}
