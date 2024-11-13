@@ -14,7 +14,7 @@ g.highcharts-data-labels.dl-white text {
   text-shadow: none;
 }
 
-.column g.highcharts-data-label text, .bar g.highcharts-data-label text{
+.column .highcharts-data-label, .bar .highcharts-data-label{
   fill: #000;
 }
 
@@ -121,19 +121,14 @@ g.highcharts-data-labels.dl-white text {
   stroke: var(--color-12, #91e8e1);
 }
 
-.data-labels-inside .highcharts-data-label,
-.brand .data-labels-inside .highcharts-data-label text {
+.column.data-labels-inside .highcharts-data-label,
+.bar.data-labels-inside .highcharts-data-label {
   fill: #fff;
 }
 
-.data-labels-inside .highcharts-data-label-color-4.highcharts-data-label text, 
-.data-labels-inside .highcharts-data-label-color-5.highcharts-data-label text,
-.brand .data-labels-inside .highcharts-data-label-color-2.highcharts-data-label text {
-  fill: #000;
-}
-
-.line .highcharts-data-label-color-2.highcharts-data-label text,
-.line .highcharts-data-label-color-5.highcharts-data-label text{
+.highcharts-data-label-color-4.highcharts-data-label text, 
+.highcharts-data-label-color-5.highcharts-data-label text,
+.brand .highcharts-data-label-color-2.highcharts-data-label text {
   fill: #000;
 }
 
