@@ -37,21 +37,52 @@ export function beforeRenderExtensions(options, config){
     var customCSS = config.griffinConfig.CustomCSS;
     var hashId = config.griffinConfig.hashId
     if (customCSS) {
-        let style;
         if (document.getElementById("css-" + hashId)) {
-            document.getElementById("css-" + hashId).innerHTML = customCSS;
-            style = document.getElementById("css-" + hashId);
+            document.getElementById("css-" + hashId).remove() 
+        }
+        
+        if (!isTop) {
+            // if we're in an iframe then use the constructed stylesheet so that the printSVG function gets the styles
+            const sheet = new CSSStyleSheet();
+            // Apply the rules to the sheet
+            sheet.replaceSync(customCSS);    
+            document.adoptedStyleSheets.push(sheet)
         } else {
-            style = document.createElement('style');
+            const updatedCSS = prependParentToCSSWithStyleSheet(sheet, "figure#chart-" + hashId);
+            console.log(updatedCSS)
+            let style = document.createElement('style');
             style.id = "css-" + hashId
-            style.innerHTML = customCSS;
+            style.innerHTML = updatedCSS;
             document.head.appendChild(style)
         }
-        for (let x=0;x<style.sheet.cssRules.length;x++){
-            let rule = style.sheet.cssRules[x];
-            rule.selectorText = "figure#chart-" + hashId + " " + rule.selectorText;
-        }
+    }
 
+    function prependParentToCSSWithStyleSheet(sheet, parentSelector) {
+        const newRules = [];
+    
+        for (let i = 0; i < sheet.cssRules.length; i++) {
+            const rule = sheet.cssRules[i];
+    
+            if (rule.type === CSSRule.STYLE_RULE) {
+                // For regular style rules, prepend the parent selector to each selector
+                const updatedSelector = Array.from(rule.selectorText.split(','))
+                    .map(selector => `${parentSelector} ${selector.trim()}`)
+                    .join(', ');
+                newRules.push(`${updatedSelector} { ${rule.style.cssText} }`);
+            } else if (rule.type === CSSRule.MEDIA_RULE) {
+                // For media rules, recursively handle inner rules
+                const mediaRule = rule;
+                const mediaRules = Array.from(mediaRule.cssRules).map(innerRule => {
+                    const updatedSelector = Array.from(innerRule.selectorText.split(','))
+                        .map(selector => `${parentSelector} ${selector.trim()}`)
+                        .join(', ');
+                    return `${updatedSelector} { ${innerRule.style.cssText} }`;
+                });
+                newRules.push(`@media ${mediaRule.media.mediaText} { ${mediaRules.join(' ')} }`);
+            }
+        }
+    
+        return newRules.join('\n');
     }
     extendObj(options, ['plotOptions', 'pie', 'dataLabels', 'formatter'], function () {
         return this.point.name + '<br>' + returnFormatter('percentage','tooltip',config.griffinConfig.LabelDecimals).call({ value: this.percentage / 100 });
@@ -223,13 +254,14 @@ export function initSingleGriffin(griffin, i, _parent){
     var mobileImageSource = pictureContainer.querySelector('img.mobile') ? pictureContainer.querySelector('img.mobile').src : '';
     var anchor = parent.querySelector('.js-griffin-anchor');
     var isLazy = parent.classList.contains('js-griffin--lazy');
+    var isPrint = config.highchartsConfig.chart.className.includes('griffin--for-print')
     var imageLink;
     var mobileImageLink;
 
     if (isLazy){
         parent.classList.add('lazy-load--ready');
     }
-    if (!parent.hasDownload && sourceNote) {
+    if (!parent.hasDownload && sourceNote && !isPrint) {
         imageLink = document.createElement('a');
         imageLink.textContent = 'View image';
         imageLink.className = 'griffin-download-btn';
