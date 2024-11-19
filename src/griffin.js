@@ -41,11 +41,12 @@ export function beforeRenderExtensions(options, config){
             document.getElementById("css-" + hashId).remove() 
         }
         
+        const sheet = new CSSStyleSheet();
+        // Apply the rules to the sheet
+        sheet.replaceSync(customCSS);   
+        
         if (!isTop) {
             // if we're in an iframe then use the constructed stylesheet so that the printSVG function gets the styles
-            const sheet = new CSSStyleSheet();
-            // Apply the rules to the sheet
-            sheet.replaceSync(customCSS);    
             document.adoptedStyleSheets.push(sheet)
         } else {
             const updatedCSS = prependParentToCSSWithStyleSheet(sheet, "figure#chart-" + hashId);
