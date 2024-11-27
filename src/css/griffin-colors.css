@@ -14,7 +14,7 @@ g.highcharts-data-labels.dl-white text {
   text-shadow: none;
 }
 
-.column .highcharts-data-label, .bar .highcharts-data-label{
+.column .highcharts-data-label text, .bar .highcharts-data-label text {
   fill: #000;
 }
 
@@ -132,6 +132,6 @@ g.highcharts-data-labels.dl-white text {
   fill: #000;
 }
 
-.brand .data-labels-inside .highcharts-data-label-color-4.highcharts-data-label text {
+.brand.data-labels-inside .highcharts-data-label-color-4.highcharts-data-label text {
   fill: #fff;
 }
