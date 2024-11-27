@@ -7,7 +7,7 @@ import returnFormatter from './scripts/return-number-formatter';
 import returnPointFormatter from './scripts/return-point-formatter';
 import returnLegendFormatter from './scripts/return-legend-formatter';
 import returnDataLabelFormatter from './scripts/return-datalabel-formatter';
-import returnNumberFormatter from './scripts/return-number-formatter';
+// import returnNumberFormatter from './scripts/return-number-formatter';
 import hash from './scripts/hash';
 import {adjustIframeHeight} from './render';
 import defaultsDeep from 'lodash.defaultsdeep';
@@ -299,11 +299,11 @@ export function initSingleGriffin(griffin, i, _parent){
         })
         );
     }
-        if (config.griffinConfig.CustomSettings.colorAxis && !config.griffinConfig.CustomSettings.colorAxis.dataClasses) {
-            extendObj(config.griffinConfig.CustomSettings.colorAxis, ['labels', 'formatter'], returnNumberFormatter(config.griffinConfig.NumberFormat, 'legend',
-                config.griffinConfig.LabelDecimals
-            ));
-        }
+        // if (config.griffinConfig.CustomSettings.colorAxis && !config.griffinConfig.CustomSettings.colorAxis.dataClasses) {
+        //     extendObj(config.griffinConfig.CustomSettings.colorAxis, ['labels', 'formatter'], returnNumberFormatter(config.griffinConfig.NumberFormat, 'legend',
+        //         config.griffinConfig.LabelDecimals
+        //     ));
+        // }
         config.highchartsConfig.plotOptions.series.states = {inactive: {enabled: true}}
         config.highchartsConfig.tooltip.padding = 1;
         extendObj(config.highchartsConfig, ['plotOptions', 'series', 'point', 'events', 'mouseOver'], function() {
