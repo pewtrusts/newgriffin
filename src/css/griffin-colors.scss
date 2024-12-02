@@ -126,12 +126,28 @@ g.highcharts-data-labels.dl-white text {
   fill: #fff;
 }
 
+
 .highcharts-data-label-color-4.highcharts-data-label text, 
-.highcharts-data-label-color-5.highcharts-data-label text,
+.highcharts-data-label-color-5.highcharts-data-label text {
+  
+   .gray &, 
+   .pew-blue &,
+   .turquoise &,
+   .teal &,
+   .orange &,
+   .red &,
+   .green &,
+   .pink &,
+   .purple &, 
+   .yellow &  {
+    fill: #000;
+  }
+}
+
+
+/* for brand palette, teal and yellow need to be black at all times */
+.brand .highcharts-data-label-color-5.highcharts-data-label text,
 .brand .highcharts-data-label-color-2.highcharts-data-label text {
   fill: #000;
 }
 
-.brand .data-labels-inside .highcharts-data-label-color-4.highcharts-data-label text {
-  fill: #fff;
-}
