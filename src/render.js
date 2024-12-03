@@ -53,6 +53,10 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [],
     return chartData;
 }
 function renderFromImages(chartData){
+    const griffinImages = document.querySelectorAll('.js-griffin-image');
+    if (window.IS_PRERENDERING) {
+        return
+    }
     griffinImages.forEach((img, i) => {
         const slot = document.createElement('div');
         // const mobileImg = document.getElementById('mobile-' + img.dataset.id)
