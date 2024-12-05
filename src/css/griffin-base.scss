@@ -287,7 +287,7 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
 }
 
 @media print {
-  .highcharts-container:not(.bar.data-label-inside) .highcharts-data-label text {
+  .highcharts-container:not(.bar.data-labels-inside, .column.data-labels-inside) .highcharts-data-label text, .dl-series .highcharts-data-label text {
     -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);
   }
   figcaption a {
