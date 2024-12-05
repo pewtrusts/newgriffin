@@ -103,7 +103,7 @@ function renderFromImages(chartData){
 }
 function sortByFigure(a, b) {
     let reg = new RegExp(/\d+(\.\d+)?/)
-    if (a.chartData.griffinConfig.ChartLabel && b.chartData.griffinConfig.ChartLabel) {
+    if (reg.test(a.chartData.griffinConfig.ChartLabel) && reg.test(b.chartData.griffinConfig.ChartLabel)) {
         let label1 = Number(reg.exec(a.chartData.griffinConfig.ChartLabel)[0])
         let label2 = Number(reg.exec(b.chartData.griffinConfig.ChartLabel)[0])
         return label1 > label2 ?  1 : -1
