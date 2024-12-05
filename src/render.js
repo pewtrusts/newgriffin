@@ -101,8 +101,19 @@ function renderFromImages(chartData){
         }
     });
 }
+function sortByFigure(a, b) {
+    let reg = new RegExp(/\d+(\.\d+)?/)
+    if (a.chartData.griffinConfig.ChartLabel && b.chartData.griffinConfig.ChartLabel) {
+        let label1 = Number(reg.exec(a.chartData.griffinConfig.ChartLabel)[0])
+        let label2 = Number(reg.exec(b.chartData.griffinConfig.ChartLabel)[0])
+        return label1 > label2 ?  1 : -1
+    } else {
+        return 0
+    }
+}
 function renderFromParam(chartData){
-    chartData.forEach(d => {
+    let sortedChartData = chartData.sort(sortByFigure)
+    sortedChartData.forEach(d => {
         slot.insertAdjacentHTML('beforeend', d.template);
     });
     window.postMessage({messageType: "confirmation", message: "chartsLoaded"})
