@@ -36,12 +36,20 @@ export function beforeRenderExtensions(options, config){
     }
     var customCSS = config.griffinConfig.CustomCSS;
     var hashId = config.griffinConfig.hashId
+    if (!isTop) {
+    document.adoptedStyleSheets.forEach((sheet, i) => {
+        if (sheet.name && sheet.name ==  "CustomCSS") {
+            document.adoptedStyleSheets.splice(i,1)
+        }
+    })
+    }
     if (customCSS) {
         if (document.getElementById("css-" + hashId)) {
             document.getElementById("css-" + hashId).remove() 
         }
         
         const sheet = new CSSStyleSheet();
+        sheet.name = "CustomCSS"
         // Apply the rules to the sheet
         sheet.replaceSync(customCSS);   
         
