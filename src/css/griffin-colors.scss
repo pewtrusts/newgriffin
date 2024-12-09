@@ -14,7 +14,7 @@ g.highcharts-data-labels.dl-white text {
   text-shadow: none;
 }
 
-.column .highcharts-data-label, .bar .highcharts-data-label{
+.column .highcharts-data-label, .bar .highcharts-data-label  {
   fill: #000;
 }
 
@@ -145,9 +145,10 @@ g.highcharts-data-labels.dl-white text {
 }
 
 
-/* for brand palette, teal and yellow need to be black at all times */
+/* for brand palette, teal, yellow, and light gray need to be black at all times */
 .brand .highcharts-data-label-color-5.highcharts-data-label text,
-.brand .highcharts-data-label-color-2.highcharts-data-label text {
+.brand .highcharts-data-label-color-2.highcharts-data-label text,
+.brand .highcharts-data-label-color-11.highcharts-data-label text {
   fill: #000;
 }
 
