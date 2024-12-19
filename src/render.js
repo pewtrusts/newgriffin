@@ -101,18 +101,34 @@ function renderFromImages(chartData){
         }
     });
 }
-function sortByFigure(a, b) {
-    let reg = new RegExp(/\d+(\.\d+)?/)
-    if (reg.test(a.chartData.griffinConfig.ChartLabel) && reg.test(b.chartData.griffinConfig.ChartLabel)) {
-        let label1 = Number(reg.exec(a.chartData.griffinConfig.ChartLabel)[0])
-        let label2 = Number(reg.exec(b.chartData.griffinConfig.ChartLabel)[0])
-        return label1 > label2 ?  1 : -1
-    } else {
-        return 0
-    }
+function versionSort(strings) {
+    return strings.sort((a, b) => {
+     // Helper function to extract numeric version parts
+     const extractVersion = (str) => {
+        // Match the version-like pattern (e.g., "1.2", "2a") and split it into parts
+        const match = str.match(/(\d+(\.\d+)*)/);
+        return match ? match[0].split('.').map(Number) : [];
+      };
+    if (a.chartData.griffinConfig.ChartLabel && b.chartData.griffinConfig.ChartLabel) {
+        let versionA = extractVersion(a.chartData.griffinConfig.ChartLabel)
+        let versionB = extractVersion(b.chartData.griffinConfig.ChartLabel)
+     
+        for (let i = 0; i < Math.max(versionA.length, versionB.length); i++) {
+            const numA = versionA[i] || 0;
+            const numB = versionB[i] || 0;
+            if (numA !== numB) {
+              return numA - numB;
+            }
+          }
+          return 0;
+        } else {
+            return 0
+        }
+    })
 }
+
 function renderFromParam(chartData){
-    let sortedChartData = chartData.sort(sortByFigure)
+    let sortedChartData = versionSort(chartData)
     sortedChartData.forEach(d => {
         slot.insertAdjacentHTML('beforeend', d.template);
     });
