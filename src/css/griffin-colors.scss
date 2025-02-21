@@ -1,5 +1,5 @@
 /* if we explicitly set datalabels inside, text shadow is none */
-.data-labels-inside .highcharts-data-label text {
+div.data-labels-inside .highcharts-data-label text {
   text-shadow: none;
   fill: #fff
 }
