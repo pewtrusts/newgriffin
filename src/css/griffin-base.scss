@@ -287,8 +287,11 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
 }
 
 @media print {
-  .highcharts-container:not(.bar.data-labels-inside, .column.data-labels-inside) .highcharts-data-label text, .dl-series .highcharts-data-label text {
+  .highcharts-container .highcharts-data-label text, .dl-series .highcharts-data-label text {
     -webkit-filter: drop-shadow(1px 1px 0.1px #fff) drop-shadow(1px -1px 0.1px #fff) drop-shadow(-1px 1px 0.1px #fff) drop-shadow(-1px -1px 0.1px #fff);
+  }
+  .highcharts-container .highcharts-mappoint-series .highcharts-data-label text {
+    -webkit-filter: none;
   }
   figcaption a {
     color: inherit;
@@ -306,9 +309,9 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
   fill: inherit;
   font-size: .85em;
 }
-  .data-label-inside .highcharts-data-label text {
+  .data-labels-inside .highcharts-data-label text {
     text-shadow: none;
-    fill: #ffffff;
+    -webkit-filter: none !important;
   }
 .highcharts-grid-line, .highcharts-axis-line {
   stroke: #a7a7a7;
