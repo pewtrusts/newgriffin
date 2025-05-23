@@ -130,7 +130,8 @@ function versionSort(strings) {
 function renderFromParam(chartData){
     let sortedChartData = versionSort(chartData)
     sortedChartData.forEach(d => {
-        slot.insertAdjacentHTML('beforeend', d.template);
+        let updated = d.template.replace("h1","h2")
+        slot.insertAdjacentHTML('beforeend', updated);
     });
     window.postMessage({messageType: "confirmation", message: "chartsLoaded"})
 }
