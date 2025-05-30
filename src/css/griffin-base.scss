@@ -79,7 +79,6 @@ img.fullscreen {
   margin-top: 1rem; 
 }
 .highcharts-container.griffin {
-  font-family: lato;
   font-size: 13.3333px;
   line-height: 1.2;
   
@@ -265,7 +264,7 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
 // }
 
 .highcharts-root text, .highcharts-tooltip * {
-  font-family: 'Lato';
+  font-family: 'Lato', monospace;
 }
 
 .highcharts-map-series .highcharts-null-point {
