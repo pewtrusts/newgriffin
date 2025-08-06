@@ -54,6 +54,7 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [],
 }
 function renderFromImages(chartData){
     const griffinImages = document.querySelectorAll('.js-griffin-image');
+    const griffinTypes = Array.from(griffinImages).map(img => img.dataset.griffinType);
     if (window.IS_PRERENDERING) {
         return
     }

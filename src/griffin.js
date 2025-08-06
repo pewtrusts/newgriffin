@@ -319,6 +319,16 @@ export function initSingleGriffin(griffin, i, _parent){
     * ***** ALSO ***** why are some modifications made to the options (defaults) and others on the config object? 
     * where are they merged?
     */
+    if (config.highchartsConfig.chart.type == 'pie') {
+        extendObj(config.highchartsConfig, ['chart', 'events', 'load'], function() {
+             this.legend.allItems.forEach(
+                            (item) => {
+                                // disable legend mouseover and click for now
+                                item.legendItem.group.on('mouseover', () => {});  
+                                item.legendItem.group.on('click', () => {});
+                            })
+        })
+    }
     if (config.highchartsConfig.chart.type == 'scatter') {
         extendObj(config.highchartsConfig, ['xAxis', 'tickLength'], 7);
         extendObj(config.highchartsConfig, ['yAxis[0]', 'tickLength'], 7);

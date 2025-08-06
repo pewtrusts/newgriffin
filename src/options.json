@@ -27,7 +27,7 @@
                 "enabled": false,
                 "connectorShape": "straight",
                 "crop": false,
-                "overflow": "allow"
+                "overflow": "none"
             },
             "showInLegend": true
         },
