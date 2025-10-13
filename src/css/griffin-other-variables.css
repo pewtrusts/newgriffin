@@ -3,3 +3,7 @@
     --stroke-width: 4px;
     --column-margin-inline: 15px;
 }
+
+.griffin-figure {
+	--underline-thickness: 1px;
+}
