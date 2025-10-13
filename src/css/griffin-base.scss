@@ -310,6 +310,15 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
     print-color-adjust: exact !important; 
 }
 }
+
+.highcharts-stack-labels text {
+	fill:#000000; 
+    font-size: .9em; 
+	font-weight: 700; 
+	text-shadow: 1px 1px 1px #fff,1px -1px 1px #fff,-1px 1px 1px #fff,-1px -1px 1px #fff
+}
+
+
 .highcharts-data-label text, text.highcharts-data-label {
   fill: inherit;
   font-size: .85em;
