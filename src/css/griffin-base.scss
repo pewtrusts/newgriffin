@@ -45,10 +45,11 @@
     font-weight: bold;
     }
 }
-.griffin-anchor {
+a.griffin-anchor {
   position: absolute;
   width: 1px;
   height: 1px;
+  background: none;
   top: 225px;
   left: 0;
 }
