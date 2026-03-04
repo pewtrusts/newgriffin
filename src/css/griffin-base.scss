@@ -360,11 +360,12 @@ div.highcharts-tooltip, .highcharts-annotation-label text {
   margin: auto var(--column-margin-inline, 16px);
 }
 
-// map resets
-
-.highcharts-legend-box {
-  fill: rgba(255, 255, 255, 0.85)
+.darkmode .highcharts-data-label text {
+    text-shadow: none;
 }
+
+
+// map resets
 
 g.highcharts-series.highcharts-map-series {
   filter: 
