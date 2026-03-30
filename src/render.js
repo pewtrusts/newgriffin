@@ -139,7 +139,7 @@ export function adjustIframeHeight(){
     const isTop = window.self == top;
        if (!isTop && window.frameElement && window.frameElement.nodeName == "IFRAME" && !window.frameElement.id.includes('promo')) {
         requestIdleCallback(() => {
-            window.frameElement.style.height = slot.offsetHeight + 40 + 'px';
+            window.frameElement.style.height = slot.offsetHeight + 11 + 'px';
         }, { timeout: 200 })
     }
 }
