@@ -46,6 +46,7 @@ async function renderGriffins({chartIDs, isFromParam, data, publishedFlags = [],
 
     }
     if (isFromParam){
+        window.griffinCharts = chartData
         renderFromParam(chartData);
     } else {
         renderFromImages(chartData, griffinTypes)
